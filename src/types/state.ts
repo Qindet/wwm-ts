@@ -6,7 +6,7 @@ export type QuestionItem = {
     secondAnswer: string,
     thirdAnswer: string,
     fourthAnswer: string,
-    rightAnswer: number
+    rightAnswer: string
 }
 
 export type QuestionLevelItem = Array<QuestionItem>

@@ -7,6 +7,7 @@ import {QuestionItem} from "../../types/state";
 import {connect} from 'react-redux'
 import {AppStateType} from "../../redux/reducers";
 import {addQuestion} from "../../redux/actions/setting-questions";
+import {ThunkDispatch} from "redux-thunk";
 
 
 const QuestionSchema = Yup.object().shape({
@@ -35,28 +36,40 @@ const QuestionSchema = Yup.object().shape({
     rightAnswer: Yup.number()
         .required('Required')
 });
+
+//
+type MapStatePropsType = {}
+type MapDispatchPropsType = {
+    addQuestion: (question: QuestionItem) => void
+}
+type OwnProps = {}
+//
+
+type AddingQuestionForm = MapStatePropsType & MapDispatchPropsType & OwnProps
+
 const AddingQuestionForm: React.FC<AddingQuestionForm> = ({addQuestion}) => {
     const initialValues: QuestionItem = {
         id: 1,
-        questionNumber: 2,
+        questionNumber: 1,
         question: '',
         firstAnswer: '',
         secondAnswer: '',
         thirdAnswer: '',
         fourthAnswer: '',
-        rightAnswer: 1}
-       return  (
-           <div>
+        rightAnswer: ''
+    }
+    return (
+        <div>
             <h1>Add new question</h1>
             <Formik
                 initialValues={initialValues}
                 validationSchema={QuestionSchema}
-                onSubmit={async values  => {
-                    const question = {...values,  id: Date.now()}
+                onSubmit={async values => {
+                    const question = {...values, id: Date.now()}
                     addQuestion(question)
                 }}
             >
-                {({ errors, touched }) => (
+                {({errors, touched}) => (
                     <Form>
                         <label htmlFor="questionNumber">Question Number</label>
                         <Field id="questionNumber" name="questionNumber" as="select">
@@ -85,15 +98,15 @@ const AddingQuestionForm: React.FC<AddingQuestionForm> = ({addQuestion}) => {
                             <div>{errors.question}</div>
                         ) : null}
                         <label htmlFor="firstAnswer">First answer</label>
-                        <Field id="firstAnswer" name="firstAnswer" />
+                        <Field id="firstAnswer" name="firstAnswer"/>
                         {errors.firstAnswer && touched.firstAnswer ? <div>{errors.firstAnswer}</div> : null}
                         <label htmlFor="secondAnswer">Second answer</label>
-                        <Field id="secondAnswer" name="secondAnswer" />
+                        <Field id="secondAnswer" name="secondAnswer"/>
                         {errors.secondAnswer && touched.secondAnswer ? (
                             <div>{errors.secondAnswer}</div>
                         ) : null}
                         <label htmlFor="thirdAnswer">Third answer</label>
-                        <Field id="thirdAnswer" name="thirdAnswer" />
+                        <Field id="thirdAnswer" name="thirdAnswer"/>
                         {errors.thirdAnswer && touched.thirdAnswer ? (
                             <div>{errors.thirdAnswer}</div>
                         ) : null}
@@ -101,10 +114,16 @@ const AddingQuestionForm: React.FC<AddingQuestionForm> = ({addQuestion}) => {
                         <Field id="fourthAnswer" name="fourthAnswer"/>
                         {errors.fourthAnswer && touched.fourthAnswer ? <div>{errors.fourthAnswer}</div> : null}
                         <label htmlFor="rightAnswer">Right answer</label>
-                        <Field id="rightAnswer" name="rightAnswer" />
+                        <Field id="rightAnswer" name="rightAnswer" as="select">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </Field>
                         {errors.rightAnswer && touched.rightAnswer ? (
                             <div>{errors.rightAnswer}</div>
                         ) : null}
+
                         <div className={classes.BtnForm}>
                             <button className="btn" type="submit">Submit</button>
                             <div>
@@ -117,20 +136,13 @@ const AddingQuestionForm: React.FC<AddingQuestionForm> = ({addQuestion}) => {
         </div>
     );
 }
-const mapDispatchToProps = (dispatch: any): MapDispatchPropsType => {
+
+const mapDispatchToProps = (dispatch: React.Dispatch<any>): MapDispatchPropsType => {
     return {
         addQuestion: question => dispatch(addQuestion(question))
     }
 }
 
 
-//
-type AddingQuestionForm = MapStatePropsType & MapDispatchPropsType & OwnProps
-type MapStatePropsType = {}
-type MapDispatchPropsType = {
-    addQuestion: (question: QuestionItem) => void
-}
-type OwnProps = {}
-//
 
 export default connect<MapStatePropsType,MapDispatchPropsType,OwnProps,AppStateType>(null,mapDispatchToProps)(AddingQuestionForm)
