@@ -1,0 +1,11 @@
+.mg {
+    margin-top: 10%;
+}
+
+.menu-main {
+    display: flex;
+    flex-direction: column;
+}
+
+
+

@@ -1,0 +1,4 @@
+.BtnForm {
+    display: flex;
+    justify-content: space-between;
+}
