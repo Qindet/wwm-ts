@@ -1,44 +1,34 @@
 {
   "questions": [
     {
-      "id": 1598955541092,
-      "questionNumber": 2,
-      "question": "hjjjjjjhgjhgj",
-      "firstAnswer": "hhhhhhhhhhhhhhhh",
-      "secondAnswer": "hhhhhhhhhhhhh",
-      "thirdAnswer": "hhhhhhhhhh",
-      "fourthAnswer": "hhhhhhhhhh",
-      "rightAnswer": 1
-    },
-    {
-      "id": 1598955541092,
-      "questionNumber": 2,
-      "question": "hjjjjjjhgjhgj",
-      "firstAnswer": "hhhhhhhhhhhhhhhh",
-      "secondAnswer": "hhhhhhhhhhhhh",
-      "thirdAnswer": "hhhhhhhhhh",
-      "fourthAnswer": "hhhhhhhhhh",
-      "rightAnswer": 1
-    },
-    {
-      "id": 1599023983203,
+      "id": 1599054944690,
       "questionNumber": 1,
-      "question": "hjjjjjjhgjhgj",
-      "firstAnswer": "hhhhhhhhhhhhhhhh",
-      "secondAnswer": "hhhhhhhhhhhhh",
-      "thirdAnswer": "hhhhhhhhhh",
-      "fourthAnswer": "hhhhhhhhhh",
-      "rightAnswer": "3"
+      "question": "Как называется популярный рецепт приготовления макарон с мясом?\t",
+      "firstAnswer": "По-деревенски",
+      "secondAnswer": "По-флотски",
+      "thirdAnswer": " По-братски",
+      "fourthAnswer": "По-божески",
+      "rightAnswer": "2"
     },
     {
-      "id": 1599027124032,
-      "questionNumber": "6",
-      "question": "hjjjjjjhgjhgj",
-      "firstAnswer": "hhhhhhhhhhhhhhhh",
-      "secondAnswer": "hhhhhhhhhhhhh",
-      "thirdAnswer": "hhhhhhhhhh",
-      "fourthAnswer": "hhhhhhhhhh",
-      "rightAnswer": "4"
+      "id": 1599059385412,
+      "questionNumber": "1",
+      "question": "Что, согласно известному выражению, должен сделать последовательный человек, сказавший «А»?",
+      "firstAnswer": "Сказать «Б»",
+      "secondAnswer": "Задать вопрос",
+      "thirdAnswer": "Дождаться ответа",
+      "fourthAnswer": "Продолжить тост",
+      "rightAnswer": "1"
+    },
+    {
+      "id": 1599060398910,
+      "questionNumber": 1,
+      "question": "Как называют открытого, простодушного человека?",
+      "firstAnswer": "Рубаха-парень",
+      "secondAnswer": "Пиджак-парень",
+      "thirdAnswer": "Кафтан-парень",
+      "fourthAnswer": "Юбка-парень",
+      "rightAnswer": "1"
     }
   ]
 }

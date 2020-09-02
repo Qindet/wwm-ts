@@ -5,7 +5,7 @@ import {NavLink, useHistory} from "react-router-dom";
 import classes from './form-styles.module.css'
 import {connect} from 'react-redux'
 import {AppStateType} from "../../redux/reducers";
-import {startingGameLoaded} from "../../redux/actions/starting-game";
+import {startingGameLoaded} from "../../redux/actions/game-actions";
 
 
 const NewGameSchema = Yup.object().shape({

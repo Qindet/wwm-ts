@@ -13,12 +13,11 @@ export type CurrentGamePlayerScore = {
     idSession: number,
     playerName: string,
     playerRecord: number,
-    playerStreak: number
+    playerStreak: number,
+    hearts: number,
+    isGameOver: boolean
 }
 
-export type Game = {
-    currentGamePlayerScore: CurrentGamePlayerScore
-}
 
 
 export type Questions =  {

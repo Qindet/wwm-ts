@@ -1,16 +1,17 @@
 import {AppStateType} from "../redux/reducers";
 import {createSelector} from 'reselect'
 
-const getQuestionsFiltered = (state: AppStateType) => {
-    return state.settingQuestionsReducer.questions.filter(q=>state.gameReducer.currentGamePlayerScore.idSession ===+q.questionNumber)
+const getQuestions = (state: AppStateType) => {
+    return state.settingQuestionsReducer.questions
 }
 
-const getQuestionsLength = (state: AppStateType) => {
-    return state.settingQuestionsReducer.questions.filter(q=>state.gameReducer.currentGamePlayerScore.idSession ===+q.questionNumber).length
+const getCurrentGameStreak = (state: AppStateType) => {
+    return state.gameReducer.currentGamePlayerScore.playerStreak
 }
 
-export const getQuestionSelector = createSelector(getQuestionsFiltered,getQuestionsLength,
-    (questions,length)=> {
-    return questions.find((_,i)=>i===Math.floor(Math.random()*length)+1)
+export const getQuestionSelector = createSelector(getQuestions,getCurrentGameStreak,
+    (questions,streak)=> {
+        const questionsFiltered = questions.filter(q=>streak ===+q.questionNumber)
+        const rand = Math.floor(Math.random()*questionsFiltered.length)
+        return questionsFiltered.find((_,i)=> i===rand)
     })
-

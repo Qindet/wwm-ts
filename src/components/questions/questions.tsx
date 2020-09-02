@@ -7,14 +7,14 @@ import {QuestionItem} from "../../types/state";
 
 //
 type MapStatePropsType = {
-    question: QuestionItem | undefined
+    question?: QuestionItem
 }
 type MapDispatchPropsType = {}
 type OwnProps = {}
 //
 type Question = MapStatePropsType & MapDispatchPropsType & OwnProps
 
-const Question: React.FC<Question> = ({question={question:'ds'}}) => {
+const Question: React.FC<Question> = ({question={question:''}}) => {
 
     return (
         <div className={classes.QM}>
@@ -36,7 +36,6 @@ const Question: React.FC<Question> = ({question={question:'ds'}}) => {
 
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
-
     return {
         question: getQuestionSelector(state)
     }

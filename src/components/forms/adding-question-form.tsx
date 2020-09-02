@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
+import {Formik, Form, Field, useFormik} from 'formik';
 import * as Yup from 'yup';
 import {NavLink} from "react-router-dom";
 import classes from './form-styles.module.css'
@@ -15,7 +15,7 @@ const QuestionSchema = Yup.object().shape({
         .required('Required'),
     question: Yup.string()
         .min(10, 'Too Short!')
-        .max(50, 'Too Long!')
+        .max(100, 'Too Long!')
         .required('Required'),
     firstAnswer: Yup.string()
         .min(10, 'Too Short!')
@@ -67,9 +67,10 @@ const AddingQuestionForm: React.FC<AddingQuestionForm> = ({addQuestion}) => {
                 onSubmit={async values => {
                     const question = {...values, id: Date.now()}
                     addQuestion(question)
+
                 }}
             >
-                {({errors, touched}) => (
+                {({errors, touched,handleReset}) => (
                     <Form>
                         <label htmlFor="questionNumber">Question Number</label>
                         <Field id="questionNumber" name="questionNumber" as="select">
@@ -125,7 +126,8 @@ const AddingQuestionForm: React.FC<AddingQuestionForm> = ({addQuestion}) => {
                         ) : null}
 
                         <div className={classes.BtnForm}>
-                            <button className="btn" type="submit">Submit</button>
+                            <button onClick={handleReset}
+                                className="btn" type="submit">Submit</button>
                             <div>
                                 <NavLink className="btn" to="/">Back</NavLink>
                             </div>

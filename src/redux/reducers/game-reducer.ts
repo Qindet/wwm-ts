@@ -1,23 +1,40 @@
-import {ActionsStartingGame} from "../../types/actions-types/starting-game";
-import {Game} from "../../types/state";
-import {START_GAME_LOADED} from "../actions/types";
+import {ActionsGameBegins, ActionsStartingGame} from "../../types/actions-types/game-actions";
+import {CurrentGamePlayerScore} from "../../types/state";
+import {CORRECT_ANSWER, GAME_OVER, START_GAME_LOADED, WRONG_ANSWER} from "../actions/types";
 
 
-const initialState: Game = {
-    currentGamePlayerScore: {
+const initialState: CurrentGamePlayerScore = {
         idSession: 1,
         playerName: '',
         playerRecord: 1,
-        playerStreak: 1
-    }
+        playerStreak: 1,
+        hearts: 2,
+        isGameOver: false
 }
 
-const gameReducer = (state=initialState,action:ActionsStartingGame) => {
+const gameReducer = (state=initialState,action:ActionsStartingGame | ActionsGameBegins) => {
     switch (action.type) {
         case START_GAME_LOADED:
             return {
                 ...state,
-                currentGamePlayerScore: {playerName: action.playerName,playerRecord: 0,idSession: action.idSession,playerStreak: 1}
+                playerName: action.playerName,
+                playerRecord: 0,
+                idSession: action.idSession
+            }
+        case CORRECT_ANSWER:
+            return {
+                ...state,
+                playerRecord: action.award
+            }
+        case WRONG_ANSWER:
+            return {
+                ...state,
+                hearts: state.hearts-1
+            }
+        case GAME_OVER:
+            return {
+                ...state,
+                isGameOver: true
             }
         default:
             return state
