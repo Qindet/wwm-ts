@@ -27,10 +27,12 @@ export type ActionGettingQuestionsRequested = {
 
 export type ActionGettingQuestionsLoaded = {
     type:  typeof GET_QUESTIONS_LOADED,
+    questions: Array<QuestionItem>
 }
 
 export type ActionGettingQuestionsFailed = {
-    type:  typeof GET_QUESTIONS_FAILED
+    type:  typeof GET_QUESTIONS_FAILED,
+    error: string
 }
 
 export type ActionsAddingQuestions = ActionAddingQuestionRequested | ActionAddingQuestionLoaded | ActionAddingQuestionFailed

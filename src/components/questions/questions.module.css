@@ -1,0 +1,23 @@
+
+
+.QuestionMain {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.QuestionMain a {
+    width: 50%;
+}
+
+.QM {
+    margin-top: 30%;
+}
+
+.QuestionMainFlex {
+    display: flex;
+}
+
+.QuestionMainBlock {
+
+    word-wrap: break-word;
+}

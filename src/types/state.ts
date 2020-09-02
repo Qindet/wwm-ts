@@ -9,11 +9,20 @@ export type QuestionItem = {
     rightAnswer: string
 }
 
-export type QuestionLevelItem = Array<QuestionItem>
+export type CurrentGamePlayerScore = {
+    idSession: number,
+    playerName: string,
+    playerRecord: number,
+    playerStreak: number
+}
+
+export type Game = {
+    currentGamePlayerScore: CurrentGamePlayerScore
+}
 
 
 export type Questions =  {
-    questions: Array<QuestionLevelItem>,
+    questions: Array<QuestionItem>,
     questionsLoaded: boolean,
     questionsError: boolean | string
 }

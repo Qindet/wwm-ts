@@ -6,7 +6,7 @@ enum responseCode {
 export default class MainService {
     addQuestion = async (question: QuestionItem) => {
         try {
-            const res = await axios.post(`http://localhost:3000/questions/1`,question,{
+            const res = await axios.post(`http://localhost:3000/questions`,question,{
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -18,7 +18,22 @@ export default class MainService {
         } catch (e) {
             throw e
         }
-
+    }
+    getQuestions = async () => {
+        try {
+            const res = await axios.get(`http://localhost:3000/questions`,{
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
+            })
+            if (res.status === responseCode.Failed) {
+                throw new Error('Something went wrong')
+            }
+            return res.data
+        } catch (e) {
+            throw e
+        }
     }
 }
 

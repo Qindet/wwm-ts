@@ -9,12 +9,7 @@ import {ActionsAddingQuestions, ActionsGettingQuestions} from "../../types/actio
 
 
 const initialState: Questions = {
-    questions: [
-        [{id:1, questionNumber:1,question: 'fdsf', firstAnswer:'fds',secondAnswer:'fds',thirdAnswer:'fds',fourthAnswer:'fds',rightAnswer: '2' }],
-        [{id:1, questionNumber:1,question: 'fdsf', firstAnswer:'fds',secondAnswer:'fds',thirdAnswer:'fds',fourthAnswer:'fds',rightAnswer: '2' }],
-        [{id:1, questionNumber:1,question: 'fdsf', firstAnswer:'fds',secondAnswer:'fds',thirdAnswer:'fds',fourthAnswer:'fds',rightAnswer: '2' }],
-        [{id:1, questionNumber:1,question: 'fdsf', firstAnswer:'fds',secondAnswer:'fds',thirdAnswer:'fds',fourthAnswer:'fds',rightAnswer: '2' }]
-    ],
+    questions: [],
     questionsLoaded: true,
     questionsError: false
 }
@@ -22,40 +17,32 @@ const initialState: Questions = {
 const settingQuestionsReducer = (state=initialState,action:ActionsAddingQuestions|ActionsGettingQuestions) => {
     switch (action.type) {
         case ADD_QUESTION_REQUESTED:
+        case GET_QUESTIONS_REQUESTED:
             return {
                 ...state,
                 questionsLoaded: true,
                 questionsError: false
             }
         case ADD_QUESTION_LOADED:
-                const level = action.question.questionNumber
-                const item = [...state.questions[level],action.question]
-                const items = [...state.questions ]
-                items[level] = item
             return {
                 ...state,
-                questions:items,
+                questions: [...state.questions,action.question],
                 questionsLoaded: false,
                 questionsError: false
             }
         case ADD_QUESTION_FAILED:
+        case GET_QUESTIONS_FAILED:
             return {
                 ...state,
+                questionsLoaded: false,
                 questionsError: action.error
-            }
-        case GET_QUESTIONS_REQUESTED:
-            return {
-                ...state
             }
         case GET_QUESTIONS_LOADED:
             return {
                 ...state,
+                questions: action.questions,
                 questionsLoaded: false,
                 questionsError: false
-            }
-        case GET_QUESTIONS_FAILED:
-            return {
-                ...state
             }
         default:
             return state
