@@ -1,5 +1,5 @@
 import React from "react";
-import Questions from "../questions";
+import QuestionContainer from "../../containers/question-container/question-container";
 
 
 
@@ -8,7 +8,7 @@ const GamePage: React.FC = () => {
 
     return <div className="container mg">
 
-        <Questions/>
+        <QuestionContainer/>
     </div>
 }
 

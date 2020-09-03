@@ -1,0 +1,26 @@
+.QuestionItem {
+    min-width: 400px;
+
+    padding: 10px;
+    cursor: pointer;
+}
+
+.QuestionItem:hover {
+    background-color: gray;
+}
+
+.QuestionItemPing {
+    background-color: blue;
+}
+
+.QuestionItemPong {
+    background-color: orange;
+}
+
+.QuestionItemCorrect {
+    background-color: lawngreen;
+}
+
+.QuestionItemWrong {
+    background-color: red;
+}
