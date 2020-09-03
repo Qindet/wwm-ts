@@ -3,14 +3,12 @@
 .QuestionMain {
     display: flex;
     flex-wrap: wrap;
-}
-
-.QuestionMain a {
-    width: 50%;
+    max-width: 100%;
+    justify-content: center;
 }
 
 .QM {
-    margin-top: 30%;
+    margin-top: 50%;
 }
 
 .QuestionMainFlex {
@@ -18,6 +16,16 @@
 }
 
 .QuestionMainBlock {
-
     word-wrap: break-word;
+    text-align: center;
+}
+
+.QuestionItem {
+    min-width: 400px;
+    background-color: gainsboro;
+    padding: 10px;
+    cursor: pointer;
+}
+.QuestionItem:hover {
+    background-color: gray;
 }

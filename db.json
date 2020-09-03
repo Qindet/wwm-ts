@@ -29,6 +29,16 @@
       "thirdAnswer": "Кафтан-парень",
       "fourthAnswer": "Юбка-парень",
       "rightAnswer": "1"
+    },
+    {
+      "id": 1599117690213,
+      "questionNumber": "2",
+      "question": "Что планирует человек, собирающийся «залечь на дно»?",
+      "firstAnswer": "спрятаться и затаиться",
+      "secondAnswer": "пойти на рыбалку",
+      "thirdAnswer": "заняться дайвингом",
+      "fourthAnswer": "утопиться",
+      "rightAnswer": "1"
     }
   ]
 }

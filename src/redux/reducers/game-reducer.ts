@@ -24,7 +24,8 @@ const gameReducer = (state=initialState,action:ActionsStartingGame | ActionsGame
         case CORRECT_ANSWER:
             return {
                 ...state,
-                playerRecord: action.award
+                playerRecord: action.award,
+                playerStreak: state.playerStreak + 1
             }
         case WRONG_ANSWER:
             return {

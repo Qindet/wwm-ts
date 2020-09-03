@@ -11,29 +11,29 @@ import {ThunkDispatch} from "redux-thunk";
 
 
 const QuestionSchema = Yup.object().shape({
-    questionNumber: Yup.number()
+    questionNumber: Yup.string()
         .required('Required'),
     question: Yup.string()
         .min(10, 'Too Short!')
         .max(100, 'Too Long!')
         .required('Required'),
     firstAnswer: Yup.string()
-        .min(10, 'Too Short!')
+        .min(5, 'Too Short!')
         .max(50, 'Too Long!')
         .required('Required'),
     secondAnswer: Yup.string()
-        .min(10, 'Too Short!')
+        .min(5, 'Too Short!')
         .max(50, 'Too Long!')
         .required('Required'),
     thirdAnswer: Yup.string()
-        .min(10, 'Too Short!')
+        .min(5, 'Too Short!')
         .max(50, 'Too Long!')
         .required('Required'),
     fourthAnswer: Yup.string()
-        .min(10, 'Too Short!')
+        .min(5, 'Too Short!')
         .max(50, 'Too Long!')
         .required('Required'),
-    rightAnswer: Yup.number()
+    rightAnswer: Yup.string()
         .required('Required')
 });
 
@@ -48,9 +48,10 @@ type OwnProps = {}
 type AddingQuestionForm = MapStatePropsType & MapDispatchPropsType & OwnProps
 
 const AddingQuestionForm: React.FC<AddingQuestionForm> = ({addQuestion}) => {
+
     const initialValues: QuestionItem = {
         id: 1,
-        questionNumber: 1,
+        questionNumber: '',
         question: '',
         firstAnswer: '',
         secondAnswer: '',

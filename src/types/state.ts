@@ -1,6 +1,6 @@
 export type QuestionItem = {
     id: number
-    questionNumber: number,
+    questionNumber: string,
     question: string,
     firstAnswer: string,
     secondAnswer: string,
