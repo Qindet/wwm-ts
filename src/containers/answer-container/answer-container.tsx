@@ -1,19 +1,30 @@
-import React, { useState} from "react";
+import React, {useEffect, useState} from "react";
 import classes from '../../components/answer/answer.module.css'
 import Answer from "../../components/answer/answer";
-import {wrongAnswer} from "../../redux/actions/game-actions";
-import {QuestionItem} from "../../types/state";
 
 type AnswerContainer = {
-    setShow: (flag: boolean) => void,
+    setShow: () => void,
     questionChecker: (number: number) => string,
     number: number,
     answer: string,
     correctAnswer: () => any
     numberOfCorrect: string
+    isWrong: boolean
+    setIsWrong: (ans: boolean) => void
+    wrongAnswer: () => void
 }
 
-const AnswerContainer: React.FC<AnswerContainer> = ({questionChecker,number,answer,correctAnswer,setShow,numberOfCorrect})  => {
+const AnswerContainer: React.FC<AnswerContainer> = ({isWrong,setIsWrong,wrongAnswer,
+                                                        questionChecker,number,answer,correctAnswer,setShow,numberOfCorrect})  => {
+    useEffect(() => {
+        if (!isWrong) {
+            return
+        }
+        if (number===+numberOfCorrect) {
+            console.log('s')
+            setClazz(classes.QuestionItemCorrect)
+        }
+    },[isWrong])
     const [touched,setTouched]=useState(false)
     const [clazz,setClazz]=useState(classes.QuestionItemPong)
     const onClicked = async () => {
@@ -34,25 +45,18 @@ const AnswerContainer: React.FC<AnswerContainer> = ({questionChecker,number,answ
             setTimeout(() => {
                 correctAnswer()
                 setClazz(classes.QuestionItemPong)
-                setTouched(false)
-                setShow(false)
+                setShow()
             },2000)
         } else if (questionChecker(number) === 'wrong') {
             setClazz(classes.QuestionItemWrong)
+            setIsWrong(true)
             setTimeout(() => {
                 wrongAnswer()
                 setClazz(classes.QuestionItemPong)
-                showCorrect()
-                setTouched(false)
-                setShow(false)
+                setIsWrong(false)
+                // setTouched(false)
+                setShow()
             },2000)
-        }
-    }
-    const showCorrect = () => {
-        console.log(number === +numberOfCorrect)
-//
-        if (number === +numberOfCorrect) {
-            setClazz(classes.QuestionItemCorrect)
         }
     }
     const changeColor = (blink: boolean) => {

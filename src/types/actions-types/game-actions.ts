@@ -1,4 +1,4 @@
-import {CORRECT_ANSWER, GAME_OVER, START_GAME_LOADED, WRONG_ANSWER} from "../../redux/actions/types";
+import {ADD_ID_QUESTION, CORRECT_ANSWER, GAME_OVER, START_GAME_LOADED, WRONG_ANSWER} from "../../redux/actions/types";
 
 
 
@@ -10,8 +10,13 @@ export type ActionStartingGameLoaded = {
 export type ActionsStartingGame = ActionStartingGameLoaded
 
 export type ActionCorrectAnswer = {
-    type: typeof CORRECT_ANSWER,
+    type: typeof CORRECT_ANSWER
     award: number
+}
+
+export type ActionAddQuestionId = {
+    type: typeof ADD_ID_QUESTION
+    idQuestion: object
 }
 
 export type ActionWrongAnswer = {
@@ -21,5 +26,5 @@ export type ActionWrongAnswer = {
 export type ActionGameOver = {
     type: typeof GAME_OVER
 }
-export type ActionsGameBegins = ActionCorrectAnswer  | ActionWrongAnswer | ActionGameOver
+export type ActionsGameBegins = ActionCorrectAnswer  | ActionWrongAnswer | ActionGameOver | ActionAddQuestionId
 

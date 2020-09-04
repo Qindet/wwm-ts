@@ -1,10 +1,11 @@
 import {
+    ActionAddQuestionId,
     ActionCorrectAnswer,
     ActionGameOver,
     ActionStartingGameLoaded,
     ActionWrongAnswer
 } from "../../types/actions-types/game-actions";
-import {CORRECT_ANSWER, GAME_OVER, START_GAME_LOADED, WRONG_ANSWER} from "./types";
+import {ADD_ID_QUESTION, CORRECT_ANSWER, GAME_OVER, START_GAME_LOADED, WRONG_ANSWER} from "./types";
 import awardHelper from '../../utils/award-helper'
 
 
@@ -17,7 +18,7 @@ export const startingGameLoaded = (playerName: string, idSession: number): Actio
 }
 
 export const correctAnswer = (questionNumber: string): ActionCorrectAnswer => {
-    const award = awardHelper(questionNumber)
+    const award = awardHelper(questionNumber.toString())
     return {
         type: CORRECT_ANSWER,
         award
@@ -27,6 +28,13 @@ export const correctAnswer = (questionNumber: string): ActionCorrectAnswer => {
 export const wrongAnswer = (): ActionWrongAnswer => {
     return {
         type: WRONG_ANSWER
+    }
+}
+
+export const addQuestionId = (idQuestion: object): ActionAddQuestionId => {
+    return {
+        type: ADD_ID_QUESTION,
+        idQuestion
     }
 }
 

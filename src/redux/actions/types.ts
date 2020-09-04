@@ -11,5 +11,5 @@ export const START_GAME_LOADED = 'START_GAME_LOADED'
 export const CORRECT_ANSWER = 'CORRECT_ANSWER'
 export const WRONG_ANSWER = 'WRONG_ANSWER'
 export const GAME_OVER = 'GAME_OVER'
-
+export const ADD_ID_QUESTION = 'ADD_ID_QUESTION'
 
