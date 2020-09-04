@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import classes from '../../components/answer/answer.module.css'
 import Answer from "../../components/answer/answer";
+import {QuestionItem} from "../../types/state";
 
 type AnswerContainer = {
     setShow: () => void,
@@ -12,16 +13,17 @@ type AnswerContainer = {
     isWrong: boolean
     setIsWrong: (ans: boolean) => void
     wrongAnswer: () => void
+    addQuestionId: (questionId: { id:number }) => void
+    question: QuestionItem
 }
 
-const AnswerContainer: React.FC<AnswerContainer> = ({isWrong,setIsWrong,wrongAnswer,
+const AnswerContainer: React.FC<AnswerContainer> = ({question,addQuestionId,isWrong,setIsWrong,wrongAnswer,
                                                         questionChecker,number,answer,correctAnswer,setShow,numberOfCorrect})  => {
     useEffect(() => {
         if (!isWrong) {
             return
         }
         if (number===+numberOfCorrect) {
-            console.log('s')
             setClazz(classes.QuestionItemCorrect)
         }
     },[isWrong])
@@ -45,6 +47,7 @@ const AnswerContainer: React.FC<AnswerContainer> = ({isWrong,setIsWrong,wrongAns
             setTimeout(() => {
                 correctAnswer()
                 setClazz(classes.QuestionItemPong)
+                addQuestionId({id:question.id})
                 setShow()
             },2000)
         } else if (questionChecker(number) === 'wrong') {
@@ -54,6 +57,8 @@ const AnswerContainer: React.FC<AnswerContainer> = ({isWrong,setIsWrong,wrongAns
                 wrongAnswer()
                 setClazz(classes.QuestionItemPong)
                 setIsWrong(false)
+                addQuestionId({id:question.id})
+
                 // setTouched(false)
                 setShow()
             },2000)

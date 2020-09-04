@@ -16,7 +16,7 @@ export type ActionCorrectAnswer = {
 
 export type ActionAddQuestionId = {
     type: typeof ADD_ID_QUESTION
-    idQuestion: object
+    idQuestion: { id: number }
 }
 
 export type ActionWrongAnswer = {

@@ -1,18 +1,18 @@
 import React, {Dispatch, useEffect, useState} from "react";
 import {connect} from 'react-redux'
-import {getQuestionSelector} from "../../selectors/game-selectors";
+import {getQuestionSelector, getQuestionsIds} from "../../selectors/game-selectors";
 import {AppStateType} from "../../redux/reducers";
 import {QuestionItem} from "../../types/state";
 import { addQuestionId, correctAnswer, wrongAnswer} from "../../redux/actions/game-actions";
 import Question from "../../components/question";
 //
 type MapStatePropsType = {
-    question?: QuestionItem | null
+    question?: QuestionItem
 }
 type MapDispatchPropsType = {
     correctAnswer: (questionNumber: string) => void
     wrongAnswer: () => void
-    addQuestionId: (questionId: object) => void
+    addQuestionId: (questionId: { id:number }) => void
 }
 type OwnProps = {}
 //
@@ -23,7 +23,7 @@ const QuestionContainer: React.FC<QuestionContainer> = ({question,correctAnswer,
         if (!question) {
             return
         }
-        addQuestionId({id: question.id})
+        console.log(1)
         const timerId=setTimeout(() => {
             setShow(true)
         },2000)
@@ -46,7 +46,8 @@ const QuestionContainer: React.FC<QuestionContainer> = ({question,correctAnswer,
             return 'wrong'
         }
     }
-    return <Question isWrong={isWrong} setIsWrong={setIsWrong} wrongAnswer={wrongAnswer}
+    return <Question addQuestionId={addQuestionId}
+        isWrong={isWrong} setIsWrong={setIsWrong} wrongAnswer={wrongAnswer}
         question={question} correctAnswer={correctAnswer} questionChecker={questionChecker} setShow={()=>setShow(false)}/>
 }
 

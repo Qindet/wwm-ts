@@ -31,7 +31,7 @@ export const wrongAnswer = (): ActionWrongAnswer => {
     }
 }
 
-export const addQuestionId = (idQuestion: object): ActionAddQuestionId => {
+export const addQuestionId = (idQuestion: { id:number }): ActionAddQuestionId => {
     return {
         type: ADD_ID_QUESTION,
         idQuestion

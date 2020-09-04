@@ -11,28 +11,33 @@ type Question = {
     isWrong: boolean
     setIsWrong: (ans: boolean) => void
     wrongAnswer: () => void
+    addQuestionId: (questionId: { id:number }) => void
 }
 
-const Question: React.FC<Question> = ({question,correctAnswer,questionChecker,setShow,setIsWrong,isWrong,wrongAnswer}) => (
+const Question: React.FC<Question> = ({addQuestionId,question,correctAnswer,questionChecker,setShow,setIsWrong,isWrong,wrongAnswer}) => (
     <div className={classes.QuestionMainContainer}>
         <div className={classes.QuestionMainBlock}>
             {question.question}
         </div>
         <div className={classes.QuestionMain}>
-            <AnswerContainer numberOfCorrect={question.rightAnswer}  setShow={setShow}
+            <AnswerContainer addQuestionId={addQuestionId} question={question}
+                numberOfCorrect={question.rightAnswer}  setShow={setShow}
                              wrongAnswer={wrongAnswer}
                      correctAnswer={() => correctAnswer(question.questionNumber)}
                              isWrong={isWrong} setIsWrong={setIsWrong}
                      questionChecker={questionChecker} number={1} answer={question.firstAnswer}/>
-            <AnswerContainer setShow={setShow}  numberOfCorrect={question.rightAnswer}
+            <AnswerContainer addQuestionId={addQuestionId} question={question}
+                setShow={setShow}  numberOfCorrect={question.rightAnswer}
                              isWrong={isWrong} setIsWrong={setIsWrong}
                              wrongAnswer={wrongAnswer}
                              correctAnswer={() => correctAnswer(question.questionNumber)} questionChecker={questionChecker} number={2} answer={question.secondAnswer}/>
-            <AnswerContainer setShow={setShow}  numberOfCorrect={question.rightAnswer}
+            <AnswerContainer addQuestionId={addQuestionId} question={question}
+                setShow={setShow}  numberOfCorrect={question.rightAnswer}
                              isWrong={isWrong} setIsWrong={setIsWrong}
                              wrongAnswer={wrongAnswer}
                              correctAnswer={() => correctAnswer(question.questionNumber)} questionChecker={questionChecker} number={3} answer={question.thirdAnswer}/>
-            <AnswerContainer setShow={setShow}  numberOfCorrect={question.rightAnswer}
+            <AnswerContainer addQuestionId={addQuestionId} question={question}
+                setShow={setShow}  numberOfCorrect={question.rightAnswer}
                              isWrong={isWrong} setIsWrong={setIsWrong}
                              wrongAnswer={wrongAnswer}
                              correctAnswer={() => correctAnswer(question.questionNumber)} questionChecker={questionChecker} number={4} answer={question.fourthAnswer}/>

@@ -127,7 +127,7 @@ const AddingQuestionForm: React.FC<AddingQuestionForm> = ({addQuestion}) => {
                         ) : null}
 
                         <div className={classes.BtnForm}>
-                            <button onClick={handleReset}
+                            <button
                                 className="btn" type="submit">Submit</button>
                             <div>
                                 <NavLink className="btn" to="/">Back</NavLink>

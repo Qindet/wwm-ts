@@ -1,18 +1,17 @@
 import {AppStateType} from "../redux/reducers";
 import {createSelector} from 'reselect'
 import * as _ from 'lodash'
+import {QuestionItem} from "../types/state";
 
 const getQuestions = (state: AppStateType) => {
     return state.settingQuestionsReducer.questions
 }
 
 const getCurrentGameStreak = (state: AppStateType) => {
-    // @ts-ignore
     return state.gameReducer.playerStreak
 }
 
-const getQuestionsIds = (state: AppStateType)=> {
-    // @ts-ignore
+export const getQuestionsIds = (state: AppStateType)=> {
     return state.gameReducer.questionsIds
 }
 
@@ -24,8 +23,10 @@ export const getQuestionSelector = createSelector(getQuestions,getCurrentGameStr
             return
         }
         // _.pullAllBy(questions,questionsIds, 'id')
-
-        const questionsFiltered = questions.filter(q=>streak ===+q.questionNumber)
+        const item = [...questions]
+        _.pullAllBy(item,questionsIds,'id')
+        console.log(item)
+        const questionsFiltered = item.filter(q=>streak ===+q.questionNumber)
         const rand = Math.floor(Math.random()*questionsFiltered.length)
         return questionsFiltered.find((_,i)=> i===rand)
     })

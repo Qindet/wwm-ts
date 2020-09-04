@@ -39,6 +39,46 @@
       "thirdAnswer": "заняться дайвингом",
       "fourthAnswer": "утопиться",
       "rightAnswer": "1"
+    },
+    {
+      "id": 1599238263031,
+      "questionNumber": "2",
+      "question": "На чём спал герой романа «Что делать?» Рахметов, закаляя революционную волю?",
+      "firstAnswer": "На стёклах",
+      "secondAnswer": "На гвоздях",
+      "thirdAnswer": "На углях",
+      "fourthAnswer": "На горошине",
+      "rightAnswer": "2"
+    },
+    {
+      "id": 1599238324397,
+      "questionNumber": "1",
+      "question": "Что Красная Шапочка несла своей бабушке?",
+      "firstAnswer": "Блины",
+      "secondAnswer": "Пирожки",
+      "thirdAnswer": "Пончики",
+      "fourthAnswer": "Ахинею",
+      "rightAnswer": "2"
+    },
+    {
+      "id": 1599238376304,
+      "questionNumber": "1",
+      "question": "Что потерял Ослик Иа в сказке про Винни-Пуха?",
+      "firstAnswer": "Память",
+      "secondAnswer": "Хвост",
+      "thirdAnswer": "Зубки",
+      "fourthAnswer": "Совесть",
+      "rightAnswer": "2"
+    },
+    {
+      "id": 1599238434464,
+      "questionNumber": "2",
+      "question": "Как называется яйцо, сваренное гуще, чем всмятку, но не вкрутую?",
+      "firstAnswer": "В сумочку",
+      "secondAnswer": "В кулёчек",
+      "thirdAnswer": "В мешочек",
+      "fourthAnswer": "В рюкзачок",
+      "rightAnswer": "3"
     }
   ]
 }

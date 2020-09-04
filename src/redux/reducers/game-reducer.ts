@@ -67,7 +67,7 @@ const gameReducer = (state=initialState,action:ActionsStartingGame | ActionsGame
             } else {
                 gameOver = true
             }
-           const playerRecord = streakChecker(state.playerStreak,state.safeRecords)
+           const playerRecord: number = streakChecker(state.playerStreak,state.safeRecords)
             return {
                 ...state,
                 hearts: newHearts,
@@ -76,9 +76,17 @@ const gameReducer = (state=initialState,action:ActionsStartingGame | ActionsGame
                 playerRecord: playerRecord
             }
         case ADD_ID_QUESTION:
+            let items = [...state.questionsIds]
+            const idx =state.questionsIds.findIndex((i)=> i.id===action.idQuestion.id)
+            if (idx===-1) {
+                items = [...state.questionsIds, action.idQuestion]
+            }
+            if (!items) {
+                items= []
+            }
             return {
                 ...state,
-                questionsIds: [...state.questionsIds,action.idQuestion || {}]
+                questionsIds: items
             }
         case GAME_OVER:
             return {
