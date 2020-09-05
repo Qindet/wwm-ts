@@ -80,5 +80,73 @@
       "fourthAnswer": "В рюкзачок",
       "rightAnswer": "3"
     }
+  ],
+  "records": [
+    {
+      "id": 1599293159386,
+      "playerName": "Dima",
+      "playerRecord": 0,
+      "playerStreak": 1
+    },
+    {
+      "id": 1599293976475,
+      "playerName": "Dima",
+      "playerRecord": 0,
+      "playerStreak": 1
+    },
+    {
+      "id": 1599294038740,
+      "playerName": "Dima",
+      "playerRecord": 0,
+      "playerStreak": 1
+    },
+    {
+      "id": 1599294341597,
+      "playerName": "Dima",
+      "playerRecord": 0,
+      "playerStreak": 1
+    },
+    {
+      "id": 1599296289955,
+      "playerName": "Dima",
+      "playerRecord": 0,
+      "playerStreak": 1
+    },
+    {
+      "id": 1599296419770,
+      "playerName": "Dima",
+      "playerRecord": 0,
+      "playerStreak": 2
+    },
+    {
+      "id": 1599296894111,
+      "playerName": "Dima",
+      "playerRecord": 0,
+      "playerStreak": 2
+    },
+    {
+      "id": 1599297116966,
+      "playerName": "Dima",
+      "playerRecord": 0,
+      "playerStreak": 1
+    },
+    {
+      "id": 1599297157430,
+      "playerName": "Dima",
+      "playerRecord": 0,
+      "playerStreak": 1
+    },
+    {
+      "id": 1599297806502,
+      "playerName": "Dima",
+      "playerRecord": 0,
+      "playerStreak": 1
+    },
+    {
+      "id": 1599298608372,
+      "playerName": "Dima",
+      "playerRecord": 0,
+      "playerStreak": 1
+    }
   ]
 }

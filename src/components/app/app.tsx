@@ -4,6 +4,7 @@ import SettingQuestionsPage from "../pages/setting-questions-page";
 import MenuContainer from "../../containers/menu-container/menu-container";
 import NewGamePage from "../pages/new-game-page";
 import GamePage from "../pages/game-page";
+import FinalScorePage from "../pages/final-score-page";
 
 
 const App = () => {
@@ -13,7 +14,8 @@ const App = () => {
             <Route path='/' component={MenuContainer} exact/>
             <Route path='/set-questions' component={SettingQuestionsPage} />
             <Route path='/new-game' component={NewGamePage} exact/>
-            <Route path='/new-game/:id' component={GamePage} />
+            <Route path='/new-game/:id' render={() => <GamePage />} />
+            <Route path='/final-score' component={FinalScorePage} exact/>
         </Switch>
     </div>
 }

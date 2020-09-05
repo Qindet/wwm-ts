@@ -2,10 +2,11 @@ import {
     ActionAddQuestionId,
     ActionCorrectAnswer,
     ActionGameOver,
+    ActionQuestionTouched,
     ActionStartingGameLoaded,
     ActionWrongAnswer
 } from "../../types/actions-types/game-actions";
-import {ADD_ID_QUESTION, CORRECT_ANSWER, GAME_OVER, START_GAME_LOADED, WRONG_ANSWER} from "./types";
+import {ADD_ID_QUESTION, CORRECT_ANSWER, GAME_OVER, QUESTION_TOUCHED, START_GAME_LOADED, WRONG_ANSWER} from "./types";
 import awardHelper from '../../utils/award-helper'
 
 
@@ -41,5 +42,11 @@ export const addQuestionId = (idQuestion: { id:number }): ActionAddQuestionId =>
 export const gameOver = (): ActionGameOver => {
     return {
         type: GAME_OVER
+    }
+}
+
+export const questionTouched = (): ActionQuestionTouched => {
+    return {
+        type: QUESTION_TOUCHED
     }
 }

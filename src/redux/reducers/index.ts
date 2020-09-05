@@ -1,7 +1,8 @@
 import {combineReducers} from 'redux'
 import settingQuestionsReducer from "./setting-questions-reducer";
 import gameReducer from "./game-reducer";
-const rootReducer = combineReducers({settingQuestionsReducer,gameReducer})
+import recordReducer from "./records-reducer";
+const rootReducer = combineReducers({settingQuestionsReducer,gameReducer,recordReducer})
 
 type RootReducerType = typeof rootReducer
 export type AppStateType = ReturnType<RootReducerType>

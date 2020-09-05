@@ -1,3 +1,5 @@
+import {ActionPlayerRecord} from "./actions-types/records-actions";
+
 export type QuestionItem = {
     id: number
     questionNumber: string
@@ -21,9 +23,14 @@ export type CurrentGamePlayerScore = {
     safePoint: number
     safeRecords: Array<number>
     questionsIds: Array<{ id: number }>
+    isQuestionTouched: boolean
 }
 
-
+export type Records = {
+    loading: boolean
+    error: string | boolean
+    record: Array<ActionPlayerRecord>
+}
 
 export type Questions =  {
     questions: Array<QuestionItem>,

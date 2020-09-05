@@ -1,6 +1,11 @@
 import {ActionsGameBegins, ActionsStartingGame} from "../../types/actions-types/game-actions";
 import {CurrentGamePlayerScore} from "../../types/state";
-import {ADD_ID_QUESTION, CORRECT_ANSWER, GAME_OVER, START_GAME_LOADED, WRONG_ANSWER} from "../actions/types";
+import {
+    ADD_ID_QUESTION,
+    CORRECT_ANSWER, QUESTION_TOUCHED,
+    START_GAME_LOADED,
+    WRONG_ANSWER
+} from "../actions/types";
 
 
 const initialState: CurrentGamePlayerScore = {
@@ -12,7 +17,8 @@ const initialState: CurrentGamePlayerScore = {
         isGameOver: false,
         safePoint: 1,
         safeRecords: [100,1000,32000,1000000],
-        questionsIds: []
+        questionsIds: [],
+        isQuestionTouched: false
 }
 
 const correctAnswerChecker = (playerStreak: number, safePoint: number) => {
@@ -40,7 +46,7 @@ const streakChecker = (playerStreak: number, safeRecords: Array<number>) => {
     }
 }
 
-const gameReducer = (state=initialState,action:ActionsStartingGame | ActionsGameBegins) => {
+const gameReducer = (state=initialState,action:ActionsStartingGame | ActionsGameBegins ) => {
     switch (action.type) {
         case START_GAME_LOADED:
             return {
@@ -88,10 +94,10 @@ const gameReducer = (state=initialState,action:ActionsStartingGame | ActionsGame
                 ...state,
                 questionsIds: items
             }
-        case GAME_OVER:
+        case QUESTION_TOUCHED:
             return {
                 ...state,
-                isGameOver: true
+                isQuestionTouched: true
             }
         default:
             return state

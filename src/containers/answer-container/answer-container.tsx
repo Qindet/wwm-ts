@@ -1,38 +1,51 @@
-import React, {useEffect, useState} from "react";
+import React, {Dispatch, useEffect, useState} from "react";
 import classes from '../../components/answer/answer.module.css'
 import Answer from "../../components/answer/answer";
 import {QuestionItem} from "../../types/state";
+import {addQuestionId, correctAnswer, questionTouched, wrongAnswer} from "../../redux/actions/game-actions";
+import {connect} from 'react-redux'
+import {AppStateType} from "../../redux/reducers";
+import {getIsQuestionTouched, getQuestionSelector} from "../../selectors/game-selectors";
 
-type AnswerContainer = {
-    setShow: () => void,
-    questionChecker: (number: number) => string,
-    number: number,
-    answer: string,
-    correctAnswer: () => any
-    numberOfCorrect: string
-    isWrong: boolean
-    setIsWrong: (ans: boolean) => void
+
+//
+type MapStatePropsType = {
+    isQuestionTouched: boolean
+}
+type MapDispatchPropsType = {
+    correctAnswer: (questionNumber: string) => void
     wrongAnswer: () => void
     addQuestionId: (questionId: { id:number }) => void
+    questionTouched: () => void
+}
+type OwnProps = {
+    setShow: () => void
+    questionChecker: (number: number) => string
+    number: number
+    answer: string
+    isWrong: boolean
+    setIsWrong: (ans: boolean) => void
     question: QuestionItem
 }
+type AnswerContainer = MapStatePropsType & MapDispatchPropsType & OwnProps
+//
 
 const AnswerContainer: React.FC<AnswerContainer> = ({question,addQuestionId,isWrong,setIsWrong,wrongAnswer,
-                                                        questionChecker,number,answer,correctAnswer,setShow,numberOfCorrect})  => {
+                                                        questionChecker,number,answer,correctAnswer,setShow,isQuestionTouched,questionTouched})  => {
     useEffect(() => {
         if (!isWrong) {
             return
         }
-        if (number===+numberOfCorrect) {
+        if (number===+question.rightAnswer) {
             setClazz(classes.QuestionItemCorrect)
         }
     },[isWrong])
-    const [touched,setTouched]=useState(false)
+
     const [clazz,setClazz]=useState(classes.QuestionItemPong)
     const onClicked = async () => {
-        if (touched) {return}
+        if (isQuestionTouched) {return }
         let flag = true
-        setTouched(true)
+        questionTouched()
         const timerId = setInterval(() => {
             changeColor(flag)
             flag=!flag
@@ -45,7 +58,7 @@ const AnswerContainer: React.FC<AnswerContainer> = ({question,addQuestionId,isWr
         if (questionChecker(number) === 'correct') {
             setClazz(classes.QuestionItemCorrect)
             setTimeout(() => {
-                correctAnswer()
+                correctAnswer(question.questionNumber)
                 setClazz(classes.QuestionItemPong)
                 addQuestionId({id:question.id})
                 setShow()
@@ -54,14 +67,13 @@ const AnswerContainer: React.FC<AnswerContainer> = ({question,addQuestionId,isWr
             setClazz(classes.QuestionItemWrong)
             setIsWrong(true)
             setTimeout(() => {
+                console.log(1)
                 wrongAnswer()
                 setClazz(classes.QuestionItemPong)
                 setIsWrong(false)
                 addQuestionId({id:question.id})
-
-                // setTouched(false)
                 setShow()
-            },2000)
+            },3000)
         }
     }
     const changeColor = (blink: boolean) => {
@@ -74,8 +86,24 @@ const AnswerContainer: React.FC<AnswerContainer> = ({question,addQuestionId,isWr
     return <Answer clazz={clazz} onClicked={onClicked} answer={answer}/>
 }
 
+const mapStateToProps = (state: AppStateType): MapStatePropsType => {
+    return {
+        isQuestionTouched: getIsQuestionTouched(state)
+    }
+}
+
+
+const mapDispatchToProps = (dispatch: Dispatch<any>): MapDispatchPropsType => {
+    return {
+        correctAnswer: (questionNumber) => dispatch(correctAnswer(questionNumber)),
+        wrongAnswer: () => dispatch(wrongAnswer()),
+        addQuestionId: (questionId)=> dispatch(addQuestionId(questionId)),
+        questionTouched: () => dispatch(questionTouched())
+    }
+}
 
 
 
 
-export default AnswerContainer
+
+export default connect<MapStatePropsType,MapDispatchPropsType,OwnProps,AppStateType>(mapStateToProps,mapDispatchToProps)(AnswerContainer)

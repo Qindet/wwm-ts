@@ -5,42 +5,43 @@ import AnswerContainer from "../../containers/answer-container";
 
 type Question = {
     question: QuestionItem
-    correctAnswer: (questionNumber: string) => void
     questionChecker: (number: number) => string
     setShow: () => void
     isWrong: boolean
     setIsWrong: (ans: boolean) => void
-    wrongAnswer: () => void
-    addQuestionId: (questionId: { id:number }) => void
 }
 
-const Question: React.FC<Question> = ({addQuestionId,question,correctAnswer,questionChecker,setShow,setIsWrong,isWrong,wrongAnswer}) => (
+const Question: React.FC<Question> = ({question,questionChecker,setShow,setIsWrong,isWrong}) => (
     <div className={classes.QuestionMainContainer}>
         <div className={classes.QuestionMainBlock}>
             {question.question}
         </div>
         <div className={classes.QuestionMain}>
-            <AnswerContainer addQuestionId={addQuestionId} question={question}
-                numberOfCorrect={question.rightAnswer}  setShow={setShow}
-                             wrongAnswer={wrongAnswer}
-                     correctAnswer={() => correctAnswer(question.questionNumber)}
-                             isWrong={isWrong} setIsWrong={setIsWrong}
-                     questionChecker={questionChecker} number={1} answer={question.firstAnswer}/>
-            <AnswerContainer addQuestionId={addQuestionId} question={question}
-                setShow={setShow}  numberOfCorrect={question.rightAnswer}
-                             isWrong={isWrong} setIsWrong={setIsWrong}
-                             wrongAnswer={wrongAnswer}
-                             correctAnswer={() => correctAnswer(question.questionNumber)} questionChecker={questionChecker} number={2} answer={question.secondAnswer}/>
-            <AnswerContainer addQuestionId={addQuestionId} question={question}
-                setShow={setShow}  numberOfCorrect={question.rightAnswer}
-                             isWrong={isWrong} setIsWrong={setIsWrong}
-                             wrongAnswer={wrongAnswer}
-                             correctAnswer={() => correctAnswer(question.questionNumber)} questionChecker={questionChecker} number={3} answer={question.thirdAnswer}/>
-            <AnswerContainer addQuestionId={addQuestionId} question={question}
-                setShow={setShow}  numberOfCorrect={question.rightAnswer}
-                             isWrong={isWrong} setIsWrong={setIsWrong}
-                             wrongAnswer={wrongAnswer}
-                             correctAnswer={() => correctAnswer(question.questionNumber)} questionChecker={questionChecker} number={4} answer={question.fourthAnswer}/>
+            {Array(4).fill('')
+                .map((_,i)=><AnswerContainer question={question} key={Date.now()*Math.random()}
+                                                 setShow={setShow} setIsWrong={setIsWrong}
+                                                 isWrong={isWrong}  questionChecker={questionChecker} number={i}
+                                                answer={i===1?question.firstAnswer:i===2?question.secondAnswer:i===3?question.thirdAnswer:question.fourthAnswer}
+                                                 />)}
+            {/*<AnswerContainer  question={question}*/}
+            {/*    setShow={setShow}*/}
+            {/*                 isWrong={isWrong} setIsWrong={setIsWrong}*/}
+            {/*         questionChecker={questionChecker} number={1} answer={question.firstAnswer}/>*/}
+            {/*<AnswerContainer  question={question}*/}
+            {/*    setShow={setShow}*/}
+            {/*                 isWrong={isWrong} setIsWrong={setIsWrong}*/}
+
+            {/*                  questionChecker={questionChecker} number={2} answer={question.secondAnswer}/>*/}
+            {/*<AnswerContainer  question={question}*/}
+            {/*    setShow={setShow}*/}
+            {/*                 isWrong={isWrong} setIsWrong={setIsWrong}*/}
+
+            {/*                  questionChecker={questionChecker} number={3} answer={question.thirdAnswer}/>*/}
+            {/*<AnswerContainer  question={question}*/}
+            {/*    setShow={setShow}*/}
+            {/*                 isWrong={isWrong} setIsWrong={setIsWrong}*/}
+
+            {/*                 questionChecker={questionChecker} number={4} answer={question.fourthAnswer}/>*/}
         </div>
     </div>
 )
