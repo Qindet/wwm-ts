@@ -45,8 +45,9 @@ export const gameOver = (): ActionGameOver => {
     }
 }
 
-export const questionTouched = (): ActionQuestionTouched => {
+export const questionTouched = (is: boolean): ActionQuestionTouched => {
     return {
-        type: QUESTION_TOUCHED
+        type: QUESTION_TOUCHED,
+        is
     }
 }

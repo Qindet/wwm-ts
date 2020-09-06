@@ -36,7 +36,8 @@ export type ActionGameOver = {
 }
 
 export type ActionQuestionTouched = {
-    type: typeof QUESTION_TOUCHED
+    type: typeof QUESTION_TOUCHED,
+    is: boolean
 }
 
 

@@ -97,7 +97,7 @@ const gameReducer = (state=initialState,action:ActionsStartingGame | ActionsGame
         case QUESTION_TOUCHED:
             return {
                 ...state,
-                isQuestionTouched: true
+                isQuestionTouched: action.is
             }
         default:
             return state

@@ -16,7 +16,7 @@ type MapDispatchPropsType = {
     correctAnswer: (questionNumber: string) => void
     wrongAnswer: () => void
     addQuestionId: (questionId: { id:number }) => void
-    questionTouched: () => void
+    questionTouched: (is: boolean) => void
 }
 type OwnProps = {
     setShow: () => void
@@ -45,7 +45,7 @@ const AnswerContainer: React.FC<AnswerContainer> = ({question,addQuestionId,isWr
     const onClicked = async () => {
         if (isQuestionTouched) {return }
         let flag = true
-        questionTouched()
+        questionTouched(true)
         const timerId = setInterval(() => {
             changeColor(flag)
             flag=!flag
@@ -64,12 +64,18 @@ const AnswerContainer: React.FC<AnswerContainer> = ({question,addQuestionId,isWr
                 setShow()
             },2000)
         } else if (questionChecker(number) === 'wrong') {
+
             setClazz(classes.QuestionItemWrong)
-            setIsWrong(true)
+           setTimeout(() => {
+               setIsWrong(true)
+           },1000)
+
+
             setTimeout(() => {
+
                 console.log(1)
                 wrongAnswer()
-                setClazz(classes.QuestionItemPong)
+                // setClazz(classes.QuestionItemPong)
                 setIsWrong(false)
                 addQuestionId({id:question.id})
                 setShow()
@@ -98,7 +104,7 @@ const mapDispatchToProps = (dispatch: Dispatch<any>): MapDispatchPropsType => {
         correctAnswer: (questionNumber) => dispatch(correctAnswer(questionNumber)),
         wrongAnswer: () => dispatch(wrongAnswer()),
         addQuestionId: (questionId)=> dispatch(addQuestionId(questionId)),
-        questionTouched: () => dispatch(questionTouched())
+        questionTouched: (is) => dispatch(questionTouched(is))
     }
 }
 

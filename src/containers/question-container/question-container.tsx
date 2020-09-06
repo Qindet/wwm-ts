@@ -3,26 +3,25 @@ import {connect} from 'react-redux'
 import {getQuestionSelector} from "../../selectors/game-selectors";
 import {AppStateType} from "../../redux/reducers";
 import {QuestionItem} from "../../types/state";
-import { addQuestionId, correctAnswer, wrongAnswer} from "../../redux/actions/game-actions";
+import { questionTouched} from "../../redux/actions/game-actions";
 import Question from "../../components/question";
 //
 type MapStatePropsType = {
     question?: QuestionItem
 }
 type MapDispatchPropsType = {
-    // correctAnswer: (questionNumber: string) => void
-    // wrongAnswer: () => void
-    // addQuestionId: (questionId: { id:number }) => void
+    questionTouched: (is: boolean) => void
 }
 type OwnProps = {}
 //
 type QuestionContainer = MapStatePropsType & MapDispatchPropsType & OwnProps
 
-const QuestionContainer: React.FC<QuestionContainer> = ({question}) => {
+const QuestionContainer: React.FC<QuestionContainer> = ({question,questionTouched}) => {
     useEffect(() => {
         if (!question) {
             return
         }
+        questionTouched(false)
         const timerId=setTimeout(() => {
             setShow(true)
         },2000)
@@ -30,7 +29,7 @@ const QuestionContainer: React.FC<QuestionContainer> = ({question}) => {
     },[question])
     const [show,setShow] = useState(false)
     const [isWrong,setIsWrong] = useState(false)
-
+    console.log(isWrong)
     if (!question) {
         return <div>empty</div>
     }
@@ -50,17 +49,15 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
         question: getQuestionSelector(state)
     }
 }
-// const mapDispatchToProps = (dispatch: Dispatch<any>): MapDispatchPropsType => {
-//     return {
-//         correctAnswer: (questionNumber) => dispatch(correctAnswer(questionNumber)),
-//         wrongAnswer: () => dispatch(wrongAnswer()),
-//         addQuestionId: (questionId)=> dispatch(addQuestionId(questionId))
-//     }
-// }
+const mapDispatchToProps = (dispatch: Dispatch<any>): MapDispatchPropsType => {
+    return {
+        questionTouched: (is: boolean) => dispatch(questionTouched(is))
+    }
+}
 
 
 
 
 
 
-export default connect<MapStatePropsType,null,OwnProps,AppStateType>(mapStateToProps, null)(QuestionContainer)
+export default connect<MapStatePropsType,MapDispatchPropsType,OwnProps,AppStateType>(mapStateToProps, mapDispatchToProps)(QuestionContainer)
