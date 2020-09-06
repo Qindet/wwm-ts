@@ -2,10 +2,14 @@ import {ActionsGameBegins, ActionsStartingGame} from "../../types/actions-types/
 import {CurrentGamePlayerScore} from "../../types/state";
 import {
     ADD_ID_QUESTION,
-    CORRECT_ANSWER, QUESTION_TOUCHED,
+    CORRECT_ANSWER,
+    HINT_ACTIVATED,
+    QUESTION_TOUCHED,
     START_GAME_LOADED,
+    TIME_IS_UP,
     WRONG_ANSWER
 } from "../actions/types";
+import thunk from "redux-thunk";
 
 
 const initialState: CurrentGamePlayerScore = {
@@ -18,7 +22,8 @@ const initialState: CurrentGamePlayerScore = {
         safePoint: 1,
         safeRecords: [100,1000,32000,1000000],
         questionsIds: [],
-        isQuestionTouched: false
+        isQuestionTouched: false,
+        hints: { halfQuestion: { quantity:1, has: true } }
 }
 
 const correctAnswerChecker = (playerStreak: number, safePoint: number) => {
@@ -87,9 +92,9 @@ const gameReducer = (state=initialState,action:ActionsStartingGame | ActionsGame
             if (idx===-1) {
                 items = [...state.questionsIds, action.idQuestion]
             }
-            if (!items) {
-                items= []
-            }
+            // if (!items) {
+            //     items= []
+            // }
             return {
                 ...state,
                 questionsIds: items
@@ -98,6 +103,22 @@ const gameReducer = (state=initialState,action:ActionsStartingGame | ActionsGame
             return {
                 ...state,
                 isQuestionTouched: action.is
+            }
+        case TIME_IS_UP:
+            return {
+                ...state,
+                isGameOver: true
+            }
+        case HINT_ACTIVATED:
+            let newQuantity = state.hints.halfQuestion.quantity -1
+            let newHas = true
+            if (newQuantity === 0) {
+                newHas = false
+            }
+
+            return {
+                ...state,
+                hints: {...state.hints,halfQuestion: { quantity: newQuantity, has: newHas }},
             }
         default:
             return state

@@ -5,7 +5,7 @@ import {QuestionItem} from "../../types/state";
 import {addQuestionId, correctAnswer, questionTouched, wrongAnswer} from "../../redux/actions/game-actions";
 import {connect} from 'react-redux'
 import {AppStateType} from "../../redux/reducers";
-import {getIsQuestionTouched, getQuestionSelector} from "../../selectors/game-selectors";
+import {getIsQuestionTouched} from "../../selectors/game-selectors";
 
 
 //
@@ -69,13 +69,8 @@ const AnswerContainer: React.FC<AnswerContainer> = ({question,addQuestionId,isWr
            setTimeout(() => {
                setIsWrong(true)
            },1000)
-
-
             setTimeout(() => {
-
-                console.log(1)
                 wrongAnswer()
-                // setClazz(classes.QuestionItemPong)
                 setIsWrong(false)
                 addQuestionId({id:question.id})
                 setShow()

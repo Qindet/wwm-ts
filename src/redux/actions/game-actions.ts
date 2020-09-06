@@ -1,12 +1,21 @@
 import {
     ActionAddQuestionId,
     ActionCorrectAnswer,
-    ActionGameOver,
+    ActionHintActivated,
     ActionQuestionTouched,
     ActionStartingGameLoaded,
+    ActionTimeIsUp,
     ActionWrongAnswer
 } from "../../types/actions-types/game-actions";
-import {ADD_ID_QUESTION, CORRECT_ANSWER, GAME_OVER, QUESTION_TOUCHED, START_GAME_LOADED, WRONG_ANSWER} from "./types";
+import {
+    ADD_ID_QUESTION,
+    CORRECT_ANSWER,
+    HINT_ACTIVATED,
+    QUESTION_TOUCHED,
+    START_GAME_LOADED,
+    TIME_IS_UP,
+    WRONG_ANSWER
+} from "./types";
 import awardHelper from '../../utils/award-helper'
 
 
@@ -39,9 +48,15 @@ export const addQuestionId = (idQuestion: { id:number }): ActionAddQuestionId =>
     }
 }
 
-export const gameOver = (): ActionGameOver => {
+export const timeIsUp = (): ActionTimeIsUp => {
     return {
-        type: GAME_OVER
+        type: TIME_IS_UP
+    }
+}
+
+export const hintActivated = (): ActionHintActivated => {
+    return {
+        type: HINT_ACTIVATED
     }
 }
 

@@ -1,22 +1,25 @@
 import React, {Dispatch, useEffect, useState} from "react";
 import {connect} from 'react-redux'
-import {getQuestionSelector} from "../../selectors/game-selectors";
+import {getHasHintHalf, getIsDisabledHintHalf, getQuestionSelector} from "../../selectors/game-selectors";
 import {AppStateType} from "../../redux/reducers";
 import {QuestionItem} from "../../types/state";
-import { questionTouched} from "../../redux/actions/game-actions";
+import {hintActivated, questionTouched, timeIsUp} from "../../redux/actions/game-actions";
 import Question from "../../components/question";
 //
 type MapStatePropsType = {
-    question?: QuestionItem
+    question?: QuestionItem,
+    hasHintHalf: boolean
 }
 type MapDispatchPropsType = {
     questionTouched: (is: boolean) => void
+    timeIsUp: () => void
+    activateHint: () => void
 }
 type OwnProps = {}
 //
 type QuestionContainer = MapStatePropsType & MapDispatchPropsType & OwnProps
 
-const QuestionContainer: React.FC<QuestionContainer> = ({question,questionTouched}) => {
+const QuestionContainer: React.FC<QuestionContainer> = ({question,questionTouched,timeIsUp, hasHintHalf,activateHint}) => {
     useEffect(() => {
         if (!question) {
             return
@@ -27,9 +30,15 @@ const QuestionContainer: React.FC<QuestionContainer> = ({question,questionTouche
         },2000)
         return () => clearTimeout(timerId)
     },[question])
+    useEffect(() => {
+        const timerId = setTimeout(() => {
+            timeIsUp()
+        },20000)
+        return () => clearTimeout(timerId)
+    },[question])
+
     const [show,setShow] = useState(false)
     const [isWrong,setIsWrong] = useState(false)
-    console.log(isWrong)
     if (!question) {
         return <div>empty</div>
     }
@@ -38,20 +47,23 @@ const QuestionContainer: React.FC<QuestionContainer> = ({question,questionTouche
     }
     const questionChecker = (number: number) => (number === +question.rightAnswer?'correct':'wrong')
     return <Question
-                     isWrong={isWrong} setIsWrong={setIsWrong}
-                     question={question}
+                     isWrong={isWrong} setIsWrong={setIsWrong} activateHint={activateHint}
+                     question={question} hasHintHalf={hasHintHalf}
                      questionChecker={questionChecker} setShow={()=>setShow(false)}/>
 }
 
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
-        question: getQuestionSelector(state)
+        question: getQuestionSelector(state),
+        hasHintHalf: getHasHintHalf(state)
     }
 }
 const mapDispatchToProps = (dispatch: Dispatch<any>): MapDispatchPropsType => {
     return {
-        questionTouched: (is: boolean) => dispatch(questionTouched(is))
+        questionTouched: (is: boolean) => dispatch(questionTouched(is)),
+        timeIsUp: () => dispatch(timeIsUp()),
+        activateHint: () => dispatch(hintActivated())
     }
 }
 
