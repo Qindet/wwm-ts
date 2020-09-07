@@ -1,7 +1,6 @@
 import {
     ActionAddQuestionId,
     ActionCorrectAnswer,
-    ActionHintActivated,
     ActionQuestionTouched,
     ActionStartingGameLoaded,
     ActionTimeIsUp,
@@ -54,11 +53,7 @@ export const timeIsUp = (): ActionTimeIsUp => {
     }
 }
 
-export const hintActivated = (): ActionHintActivated => {
-    return {
-        type: HINT_ACTIVATED
-    }
-}
+
 
 export const questionTouched = (is: boolean): ActionQuestionTouched => {
     return {

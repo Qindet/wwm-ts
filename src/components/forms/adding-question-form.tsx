@@ -61,7 +61,7 @@ const AddingQuestionForm: React.FC<AddingQuestionForm> = ({addQuestion}) => {
     }
     return (
         <div>
-            <h1>Add new question</h1>
+            <h1 className={classes.TextColorW}>Add new question</h1>
             <Formik
                 initialValues={initialValues}
                 validationSchema={QuestionSchema}
@@ -92,29 +92,29 @@ const AddingQuestionForm: React.FC<AddingQuestionForm> = ({addQuestion}) => {
                             <option value="15">15</option>
                         </Field>
                         {errors.questionNumber && touched.questionNumber ? (
-                            <div>{errors.questionNumber}</div>
+                            <div className={classes.TextColorW}>{errors.questionNumber}</div>
                         ) : null}
                         <label htmlFor="question">Question</label>
                         <Field id="question" name="question"/>
                         {errors.question && touched.question ? (
-                            <div>{errors.question}</div>
+                            <div className={classes.TextColorW}>{errors.question}</div>
                         ) : null}
                         <label htmlFor="firstAnswer">First answer</label>
                         <Field id="firstAnswer" name="firstAnswer"/>
-                        {errors.firstAnswer && touched.firstAnswer ? <div>{errors.firstAnswer}</div> : null}
+                        {errors.firstAnswer && touched.firstAnswer ? <div className={classes.TextColorW}>{errors.firstAnswer}</div> : null}
                         <label htmlFor="secondAnswer">Second answer</label>
                         <Field id="secondAnswer" name="secondAnswer"/>
                         {errors.secondAnswer && touched.secondAnswer ? (
-                            <div>{errors.secondAnswer}</div>
+                            <div className={classes.TextColorW}>{errors.secondAnswer}</div>
                         ) : null}
                         <label htmlFor="thirdAnswer">Third answer</label>
                         <Field id="thirdAnswer" name="thirdAnswer"/>
                         {errors.thirdAnswer && touched.thirdAnswer ? (
-                            <div>{errors.thirdAnswer}</div>
+                            <div className={classes.TextColorW}>{errors.thirdAnswer}</div>
                         ) : null}
                         <label htmlFor="fourthAnswer">Fourth answer</label>
                         <Field id="fourthAnswer" name="fourthAnswer"/>
-                        {errors.fourthAnswer && touched.fourthAnswer ? <div>{errors.fourthAnswer}</div> : null}
+                        {errors.fourthAnswer && touched.fourthAnswer ? <div className={classes.TextColorW}>{errors.fourthAnswer}</div> : null}
                         <label htmlFor="rightAnswer">Right answer</label>
                         <Field id="rightAnswer" name="rightAnswer" as="select">
                             <option value="1">1</option>
@@ -123,14 +123,14 @@ const AddingQuestionForm: React.FC<AddingQuestionForm> = ({addQuestion}) => {
                             <option value="4">4</option>
                         </Field>
                         {errors.rightAnswer && touched.rightAnswer ? (
-                            <div>{errors.rightAnswer}</div>
+                            <div className={classes.TextColorW}>{errors.rightAnswer}</div>
                         ) : null}
 
                         <div className={classes.BtnForm}>
                             <button
-                                className="btn" type="submit">Submit</button>
+                                className="btn btn-main" type="submit">Submit</button>
                             <div>
-                                <NavLink className="btn" to="/">Back</NavLink>
+                                <NavLink className="btn btn-main" to="/">Back</NavLink>
                             </div>
                         </div>
                     </Form>

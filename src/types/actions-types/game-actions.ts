@@ -41,10 +41,8 @@ export type ActionTimeIsUp = {
     type: typeof TIME_IS_UP
 }
 
-export type ActionHintActivated = {
-    type: typeof HINT_ACTIVATED
-}
 
 
-export type ActionsGameBegins = ActionCorrectAnswer  | ActionWrongAnswer  | ActionAddQuestionId | ActionQuestionTouched | ActionTimeIsUp | ActionHintActivated
+
+export type ActionsGameBegins = ActionCorrectAnswer  | ActionWrongAnswer  | ActionAddQuestionId | ActionQuestionTouched | ActionTimeIsUp
 

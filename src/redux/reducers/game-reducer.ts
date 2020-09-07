@@ -22,8 +22,7 @@ const initialState: CurrentGamePlayerScore = {
         safePoint: 1,
         safeRecords: [100,1000,32000,1000000],
         questionsIds: [],
-        isQuestionTouched: false,
-        hints: { halfQuestion: { quantity:1, has: true } }
+        isQuestionTouched: false
 }
 
 const correctAnswerChecker = (playerStreak: number, safePoint: number) => {
@@ -108,17 +107,6 @@ const gameReducer = (state=initialState,action:ActionsStartingGame | ActionsGame
             return {
                 ...state,
                 isGameOver: true
-            }
-        case HINT_ACTIVATED:
-            let newQuantity = state.hints.halfQuestion.quantity -1
-            let newHas = true
-            if (newQuantity === 0) {
-                newHas = false
-            }
-
-            return {
-                ...state,
-                hints: {...state.hints,halfQuestion: { quantity: newQuantity, has: newHas }},
             }
         default:
             return state

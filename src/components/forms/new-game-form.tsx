@@ -32,7 +32,7 @@ const NewGameForm: React.FC<NewGameForm> = ({startGame}) => {
     }
     return (
         <div>
-            <h1>Add new question</h1>
+            <h1 className={classes.TextColorW}>Add new question</h1>
             <Formik
                 initialValues={initialValues}
                 validationSchema={NewGameSchema}
@@ -46,11 +46,11 @@ const NewGameForm: React.FC<NewGameForm> = ({startGame}) => {
                     <Form>
                         <label htmlFor="playerName">Start the game</label>
                         <Field id="playerName" name="playerName"/>
-                        {errors.playerName && touched.playerName ? <div>{errors.playerName}</div> : null}
+                        {errors.playerName && touched.playerName ? <div className={classes.TextColorW}>{errors.playerName}</div> : null}
                         <div className={classes.BtnForm}>
-                            <button className="btn" type="submit">Submit</button>
+                            <button className="btn btn-main" type="submit">Submit</button>
                             <div>
-                                <NavLink className="btn" to="/">Back</NavLink>
+                                <NavLink className="btn btn-main" to="/">Back</NavLink>
                             </div>
                         </div>
                     </Form>

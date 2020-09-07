@@ -24,7 +24,6 @@ export type CurrentGamePlayerScore = {
     safeRecords: Array<number>
     questionsIds: Array<{ id: number }>
     isQuestionTouched: boolean
-    hints: { halfQuestion: {  quantity: number, has: boolean, activated: boolean }  }
 }
 
 export type Records = {

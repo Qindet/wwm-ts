@@ -1,25 +1,23 @@
 import React, {Dispatch, useEffect, useState} from "react";
 import {connect} from 'react-redux'
-import {getHasHintHalf, getIsDisabledHintHalf, getQuestionSelector} from "../../selectors/game-selectors";
+import {getQuestionSelector} from "../../selectors/game-selectors";
 import {AppStateType} from "../../redux/reducers";
 import {QuestionItem} from "../../types/state";
-import {hintActivated, questionTouched, timeIsUp} from "../../redux/actions/game-actions";
+import {questionTouched, timeIsUp} from "../../redux/actions/game-actions";
 import Question from "../../components/question";
 //
 type MapStatePropsType = {
-    question?: QuestionItem,
-    hasHintHalf: boolean
+    question?: QuestionItem
 }
 type MapDispatchPropsType = {
     questionTouched: (is: boolean) => void
     timeIsUp: () => void
-    activateHint: () => void
 }
 type OwnProps = {}
 //
 type QuestionContainer = MapStatePropsType & MapDispatchPropsType & OwnProps
 
-const QuestionContainer: React.FC<QuestionContainer> = ({question,questionTouched,timeIsUp, hasHintHalf,activateHint}) => {
+const QuestionContainer: React.FC<QuestionContainer> = ({question,questionTouched,timeIsUp}) => {
     useEffect(() => {
         if (!question) {
             return
@@ -47,23 +45,21 @@ const QuestionContainer: React.FC<QuestionContainer> = ({question,questionTouche
     }
     const questionChecker = (number: number) => (number === +question.rightAnswer?'correct':'wrong')
     return <Question
-                     isWrong={isWrong} setIsWrong={setIsWrong} activateHint={activateHint}
-                     question={question} hasHintHalf={hasHintHalf}
+                     isWrong={isWrong} setIsWrong={setIsWrong}
+                     question={question}
                      questionChecker={questionChecker} setShow={()=>setShow(false)}/>
 }
 
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
-        question: getQuestionSelector(state),
-        hasHintHalf: getHasHintHalf(state)
+        question: getQuestionSelector(state)
     }
 }
 const mapDispatchToProps = (dispatch: Dispatch<any>): MapDispatchPropsType => {
     return {
         questionTouched: (is: boolean) => dispatch(questionTouched(is)),
-        timeIsUp: () => dispatch(timeIsUp()),
-        activateHint: () => dispatch(hintActivated())
+        timeIsUp: () => dispatch(timeIsUp())
     }
 }
 

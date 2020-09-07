@@ -19,9 +19,12 @@ const GamePage: React.FC<GamePage> = ({isGameOver}) => {
     } else {
         content = <Redirect to="/final-score"/>
     }
-    return <div className="container mg">
-                 {content}
+    return <div className="bg-color">
+            <div className="game-container">
+                {content}
             </div>
+        </div>
+
 }
 
 const mapStateToProps = (state: AppStateType) => {
