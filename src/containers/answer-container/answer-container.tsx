@@ -64,7 +64,6 @@ const AnswerContainer: React.FC<AnswerContainer> = ({question,addQuestionId,isWr
                 setShow()
             },2000)
         } else if (questionChecker(number) === 'wrong') {
-
             setClazz(classes.QuestionItemWrong)
            setTimeout(() => {
                setIsWrong(true)

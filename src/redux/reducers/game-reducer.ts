@@ -3,13 +3,12 @@ import {CurrentGamePlayerScore} from "../../types/state";
 import {
     ADD_ID_QUESTION,
     CORRECT_ANSWER,
-    HINT_ACTIVATED,
+    HINT_ACTIVATED, HINT_DEACTIVATED,
     QUESTION_TOUCHED,
     START_GAME_LOADED,
     TIME_IS_UP,
     WRONG_ANSWER
 } from "../actions/types";
-import thunk from "redux-thunk";
 
 
 const initialState: CurrentGamePlayerScore = {
@@ -23,7 +22,7 @@ const initialState: CurrentGamePlayerScore = {
         safeRecords: [100,1000,32000,1000000],
         questionsIds: [],
         isQuestionTouched: false,
-        hints: { halfQuestion: { quantity:1, has: true } }
+        hints: { halfQuestion: {  has: true, activated: false} }
 }
 
 const correctAnswerChecker = (playerStreak: number, safePoint: number) => {
@@ -110,15 +109,14 @@ const gameReducer = (state=initialState,action:ActionsStartingGame | ActionsGame
                 isGameOver: true
             }
         case HINT_ACTIVATED:
-            let newQuantity = state.hints.halfQuestion.quantity -1
-            let newHas = true
-            if (newQuantity === 0) {
-                newHas = false
-            }
-
             return {
                 ...state,
-                hints: {...state.hints,halfQuestion: { quantity: newQuantity, has: newHas }},
+                hints: {...state.hints,halfQuestion: { has: false, activated: true }},
+            }
+        case HINT_DEACTIVATED:
+            return {
+                ...state,
+                hints: {...state.hints,halfQuestion: { ...state.hints.halfQuestion, activated: false }},
             }
         default:
             return state

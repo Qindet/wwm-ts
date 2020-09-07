@@ -2,7 +2,7 @@ import {
     ADD_ID_QUESTION, ADD_RECORD_FAILED, ADD_RECORD_LOADED, ADD_RECORD_REQUESTED,
     CORRECT_ANSWER,
     GAME_OVER, GET_QUESTIONS_FAILED, GET_QUESTIONS_LOADED,
-    GET_QUESTIONS_REQUESTED, HINT_ACTIVATED, QUESTION_TOUCHED,
+    GET_QUESTIONS_REQUESTED, HINT_ACTIVATED, HINT_DEACTIVATED, QUESTION_TOUCHED,
     START_GAME_LOADED, TIME_IS_UP,
     WRONG_ANSWER
 } from "../../redux/actions/types";
@@ -45,6 +45,9 @@ export type ActionHintActivated = {
     type: typeof HINT_ACTIVATED
 }
 
+export type ActionHintDeactivated = {
+    type: typeof HINT_DEACTIVATED
+}
 
-export type ActionsGameBegins = ActionCorrectAnswer  | ActionWrongAnswer  | ActionAddQuestionId | ActionQuestionTouched | ActionTimeIsUp | ActionHintActivated
+export type ActionsGameBegins = ActionCorrectAnswer  | ActionWrongAnswer  | ActionAddQuestionId | ActionQuestionTouched | ActionTimeIsUp | ActionHintActivated | ActionHintDeactivated
 

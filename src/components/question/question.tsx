@@ -9,11 +9,12 @@ type Question = {
     setShow: () => void
     isWrong: boolean
     setIsWrong: (ans: boolean) => void
-    hasHintHalf: boolean
     activateHint: () => void
+    isHintHalfActivated: boolean
+    hasHintHalf: boolean
 }
 
-const Question: React.FC<Question> = ({question,questionChecker,setShow,setIsWrong,isWrong,hasHintHalf,activateHint}) => {
+const Question: React.FC<Question> = ({question,questionChecker,setShow,setIsWrong,isWrong,hasHintHalf,activateHint,isHintHalfActivated}) => {
     const content = Array(4).fill('')
         .map((_,i)=><AnswerContainer question={question} key={Date.now()*Math.random()}
                                      setShow={setShow} setIsWrong={setIsWrong}
@@ -21,7 +22,7 @@ const Question: React.FC<Question> = ({question,questionChecker,setShow,setIsWro
                                      answer={i===1?question.firstAnswer:i===2?question.secondAnswer:i===3?question.thirdAnswer:question.fourthAnswer}
         />)
     let filtered = content
-    if (hasHintHalf) {
+    if (!hasHintHalf && isHintHalfActivated) {
         filtered = content.filter((item,i) => i===+question.rightAnswer || i===+question.rightAnswer+1)
     }
     return (

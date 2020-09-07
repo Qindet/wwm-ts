@@ -2,6 +2,7 @@ import {
     ActionAddQuestionId,
     ActionCorrectAnswer,
     ActionHintActivated,
+    ActionHintDeactivated,
     ActionQuestionTouched,
     ActionStartingGameLoaded,
     ActionTimeIsUp,
@@ -11,6 +12,7 @@ import {
     ADD_ID_QUESTION,
     CORRECT_ANSWER,
     HINT_ACTIVATED,
+    HINT_DEACTIVATED,
     QUESTION_TOUCHED,
     START_GAME_LOADED,
     TIME_IS_UP,
@@ -57,6 +59,11 @@ export const timeIsUp = (): ActionTimeIsUp => {
 export const hintActivated = (): ActionHintActivated => {
     return {
         type: HINT_ACTIVATED
+    }
+}
+export const hintDeactivated = (): ActionHintDeactivated => {
+    return {
+        type: HINT_DEACTIVATED
     }
 }
 

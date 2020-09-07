@@ -35,6 +35,13 @@ export const getHasHintHalf = (state: AppStateType)=> {
     return state.gameReducer.hints.halfQuestion.has
 }
 
+export const getIsActivatedHintHalf = (state: AppStateType)=> {
+    return state.gameReducer.hints.halfQuestion.activated
+}
+
+export const getIsTouched = (state: AppStateType)=> {
+    return state.gameReducer.isQuestionTouched
+}
 
 export const getQuestionSelector = createSelector(getQuestions,getCurrentGameStreak,getQuestionsIds,
     (questions,streak, questionsIds)=> {
