@@ -31,7 +31,9 @@ export const getIsQuestionTouched = (state: AppStateType)=> {
     return state.gameReducer.isQuestionTouched
 }
 
-
+export const getHearts = (state: AppStateType)=> {
+    return state.gameReducer.hearts
+}
 
 export const getQuestionSelector = createSelector(getQuestions,getCurrentGameStreak,getQuestionsIds,
     (questions,streak, questionsIds)=> {

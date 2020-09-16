@@ -2,6 +2,7 @@ import React from "react";
 import classes from './question.module.css'
 import {QuestionItem} from "../../types/state";
 import AnswerContainer from "../../containers/answer-container";
+import heart from '../../assets/heart.svg'
 
 type Question = {
     question: QuestionItem
@@ -9,12 +10,14 @@ type Question = {
     setShow: () => void
     isWrong: boolean
     setIsWrong: (ans: boolean) => void
+    hearts: number
 }
 
-const Question: React.FC<Question> = ({question,questionChecker,setShow,setIsWrong,isWrong}) => {
+const Question: React.FC<Question> = ({question,questionChecker,setShow,setIsWrong,isWrong,hearts}) => {
 
     return (
         <div className={classes.QuestionMainContainer}>
+            {hearts===0?<div className={classes.NoHearts}>No hearts :(</div>:Array(hearts).fill('').map(_=><img className={classes.Heart} src={heart} />)}
             <div className={classes.QuestionMainBlock}>
                 {question.question}
             </div>

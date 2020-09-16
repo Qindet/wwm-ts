@@ -1,8 +1,11 @@
 .QuestionItem {
     min-width: 400px;
-
     padding: 10px;
     cursor: pointer;
+    margin: 5px;
+    border-radius: 30%;
+    color: #fff;
+    border: 1px solid #fff;
 }
 
 .QuestionItem:hover {
@@ -10,11 +13,11 @@
 }
 
 .QuestionItemPing {
-    background-color: blue;
+    background-color: orange;
 }
 
 .QuestionItemPong {
-    background-color: orange;
+    background-color: midnightblue;
 }
 
 .QuestionItemCorrect {
@@ -23,4 +26,8 @@
 
 .QuestionItemWrong {
     background-color: red;
+}
+
+.Number {
+    color: darkgoldenrod;
 }

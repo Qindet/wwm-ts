@@ -1,11 +1,26 @@
 
+.Heart {
+    width: 50px;
+    height: 50px;
+    margin-left: 5%;
+}
 
+.Heart + .Heart {
+    margin-left: 5px;
+}
+
+.NoHearts {
+    font-size: 21px;
+    color: #fff;
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
 .QuestionMain {
     display: flex;
     flex-wrap: wrap;
     max-width: 900px;
     justify-content: center;
-    margin: 0 auto;
+    margin: 30px auto;
 }
 
 .QM {
@@ -19,6 +34,13 @@
 .QuestionMainBlock {
     word-wrap: break-word;
     text-align: center;
+    color: #fff;
+    padding: 20px;
+    background-color: midnightblue;
+    border: 1px solid silver;
+    border-radius: 20%;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .QuestionItem {

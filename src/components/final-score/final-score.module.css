@@ -1,0 +1,17 @@
+.FinalScoreWrapper {
+    max-width: 600px;
+    min-height: 500px;
+    margin: 0 auto;
+    border: 1px solid #fff;
+    padding: 20px;
+}
+
+.FinalScoreTextMain {
+    font-size: 21px;
+    color: #fff;
+}
+
+.FinalScoreTextPre {
+    color: darkgoldenrod;
+    font-size: 21px;
+}

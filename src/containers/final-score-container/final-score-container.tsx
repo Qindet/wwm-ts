@@ -5,6 +5,7 @@ import {getPlayerScore} from "../../selectors/game-selectors";
 import {ActionPlayerRecord} from "../../types/actions-types/records-actions";
 import {addRecord} from "../../redux/actions/records-actions";
 import { Redirect } from "react-router-dom";
+import FinalScore from "../../components/final-score";
 
 
 
@@ -32,10 +33,11 @@ const FinalScoreContainer: React.FC<FinalScoreContainer> = ({playerFinalScore,ad
     if (playerFinalScore.playerName==='') {
         return <Redirect to='/'/>
     }
-    return <div>
-        {playerFinalScore.playerName}
-        {playerFinalScore.playerRecord}
-        {playerFinalScore.playerStreak}
+    return <div className="bg-color">
+        <FinalScore
+            playerName={playerFinalScore.playerName}
+            playerRecord={playerFinalScore.playerRecord}
+            playerStreak={playerFinalScore.playerStreak}/>
     </div>
 }
 

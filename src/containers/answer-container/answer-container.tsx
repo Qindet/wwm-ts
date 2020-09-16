@@ -64,7 +64,6 @@ const AnswerContainer: React.FC<AnswerContainer> = ({question,addQuestionId,isWr
                 setShow()
             },2000)
         } else if (questionChecker(number) === 'wrong') {
-
             setClazz(classes.QuestionItemWrong)
            setTimeout(() => {
                setIsWrong(true)
@@ -84,7 +83,7 @@ const AnswerContainer: React.FC<AnswerContainer> = ({question,addQuestionId,isWr
             setClazz(classes.QuestionItemPing)
         }
     }
-    return <Answer clazz={clazz} onClicked={onClicked} answer={answer}/>
+    return <Answer clazz={clazz} onClicked={onClicked} answer={answer} number={number}/>
 }
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {

@@ -1,13 +1,16 @@
 import React, {Dispatch, useEffect, useState} from "react";
 import {connect} from 'react-redux'
-import {getQuestionSelector} from "../../selectors/game-selectors";
+import {getHearts, getQuestionSelector} from "../../selectors/game-selectors";
 import {AppStateType} from "../../redux/reducers";
 import {QuestionItem} from "../../types/state";
 import {questionTouched, timeIsUp} from "../../redux/actions/game-actions";
 import Question from "../../components/question";
+import QuestionPresentation from "../../components/question-presentation";
+import { Redirect } from "react-router-dom";
 //
 type MapStatePropsType = {
     question?: QuestionItem
+    hearts: number
 }
 type MapDispatchPropsType = {
     questionTouched: (is: boolean) => void
@@ -17,7 +20,7 @@ type OwnProps = {}
 //
 type QuestionContainer = MapStatePropsType & MapDispatchPropsType & OwnProps
 
-const QuestionContainer: React.FC<QuestionContainer> = ({question,questionTouched,timeIsUp}) => {
+const QuestionContainer: React.FC<QuestionContainer> = ({question,questionTouched,timeIsUp,hearts}) => {
     useEffect(() => {
         if (!question) {
             return
@@ -31,29 +34,30 @@ const QuestionContainer: React.FC<QuestionContainer> = ({question,questionTouche
     useEffect(() => {
         const timerId = setTimeout(() => {
             timeIsUp()
-        },20000)
+        },2000000)
         return () => clearTimeout(timerId)
     },[question])
 
     const [show,setShow] = useState(false)
     const [isWrong,setIsWrong] = useState(false)
     if (!question) {
-        return <div>empty</div>
+        return <Redirect to="/"/>
     }
     if (!show) {
-        return <div>{question.questionNumber}</div>
+        return <div><QuestionPresentation questionNumber={question?.questionNumber}/></div>
     }
     const questionChecker = (number: number) => (number === +question.rightAnswer?'correct':'wrong')
     return <Question
                      isWrong={isWrong} setIsWrong={setIsWrong}
-                     question={question}
+                     question={question} hearts={hearts}
                      questionChecker={questionChecker} setShow={()=>setShow(false)}/>
 }
 
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
-        question: getQuestionSelector(state)
+        question: getQuestionSelector(state),
+        hearts: getHearts(state)
     }
 }
 const mapDispatchToProps = (dispatch: Dispatch<any>): MapDispatchPropsType => {
