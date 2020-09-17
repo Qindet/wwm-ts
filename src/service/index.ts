@@ -52,5 +52,21 @@ export default class MainService {
             throw e
         }
     }
+    getRecords = async () => {
+        try {
+            const res = await axios.get(`http://localhost:3000/records`,{
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
+            })
+            if (res.status === responseCode.Failed) {
+                throw new Error('Something went wrong')
+            }
+            return res.data
+        } catch (e) {
+            throw e
+        }
+    }
 }
 

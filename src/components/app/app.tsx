@@ -5,7 +5,7 @@ import MenuContainer from "../../containers/menu-container/menu-container";
 import NewGamePage from "../pages/new-game-page";
 import GamePage from "../pages/game-page";
 import FinalScorePage from "../pages/final-score-page";
-
+import Records from "../../containers/records-container";
 
 const App = () => {
 
@@ -15,7 +15,8 @@ const App = () => {
             <Route path='/set-questions' component={SettingQuestionsPage} />
             <Route path='/new-game' component={NewGamePage} exact/>
             <Route path='/new-game/:id' render={() => <GamePage />} />
-            <Route path='/final-score' component={FinalScorePage} exact/>
+            <Route path='/final-score' component={FinalScorePage} />
+            <Route path='/records' component={Records} />
         </Switch>
     </div>
 }

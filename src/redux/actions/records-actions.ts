@@ -1,14 +1,23 @@
 import MainService from "../../service";
-import {ActionsAddingQuestions} from "../../types/actions-types/setting-questions";
-import {ADD_RECORD_FAILED, ADD_RECORD_LOADED, ADD_RECORD_REQUESTED} from "./types";
-import {QuestionItem} from "../../types/state";
+import {
+    ADD_RECORD_FAILED,
+    ADD_RECORD_LOADED,
+    ADD_RECORD_REQUESTED,
+    GET_RECORDS_FAILED,
+    GET_RECORDS_LOADED,
+    GET_RECORDS_REQUESTED
+} from "./types";
 import {ThunkAction} from "redux-thunk";
 import {AppStateType} from "../reducers";
 import {
     ActionAddingRecordFailed,
     ActionAddingRecordLoaded,
     ActionAddingRecordRequested,
-    ActionPlayerRecord, ActionsAddingRecord
+    ActionGettingRecordsFailed,
+    ActionGettingRecordsLoaded,
+    ActionGettingRecordsRequested,
+    ActionPlayerRecord,
+    ActionsAddingRecord, ActionsGettingRecords
 } from "../../types/actions-types/records-actions";
 
 const service = new MainService()
@@ -33,8 +42,6 @@ const addingRecordFailed = (error: ErrorEvent): ActionAddingRecordFailed => {
     }
 }
 
-
-
 export const addRecord = (record: ActionPlayerRecord):
     ThunkAction<Promise<void>,AppStateType,unknown,ActionsAddingRecord> =>
     async (dispatch) => {
@@ -44,5 +51,37 @@ export const addRecord = (record: ActionPlayerRecord):
             dispatch(addingRecordLoaded(record))
         } catch (e) {
             dispatch(addingRecordFailed(e))
+        }
+    }
+
+const gettingRecordsRequested = (): ActionGettingRecordsRequested => {
+    return {
+        type: GET_RECORDS_REQUESTED
+    }
+}
+
+const gettingRecordsLoaded = (records: Array<ActionPlayerRecord>): ActionGettingRecordsLoaded => {
+    return {
+        type: GET_RECORDS_LOADED,
+        records
+    }
+}
+
+const gettingRecordsFailed = (error: ErrorEvent): ActionGettingRecordsFailed => {
+    return {
+        type: GET_RECORDS_FAILED,
+        error: error.message
+    }
+}
+
+export const getRecords = ():
+    ThunkAction<Promise<void>,AppStateType,unknown,ActionsGettingRecords> =>
+    async (dispatch) => {
+        try {
+            dispatch(gettingRecordsRequested())
+            const records = await service.getRecords()
+            dispatch(gettingRecordsLoaded(records))
+        } catch (e) {
+            dispatch(gettingRecordsFailed(e))
         }
     }

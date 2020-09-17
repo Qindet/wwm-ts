@@ -29,7 +29,7 @@ export type CurrentGamePlayerScore = {
 export type Records = {
     loading: boolean
     error: string | boolean
-    record: Array<ActionPlayerRecord>
+    records: Array<ActionPlayerRecord>
 }
 
 export type Questions =  {

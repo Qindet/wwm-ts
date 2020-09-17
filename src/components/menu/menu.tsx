@@ -15,6 +15,9 @@ const Menu = () => (
             <div className="row">
                 <NavLink to="/new-game" className="btn-large btn-main">Play the game</NavLink>
             </div>
+            <div className="row">
+                <NavLink to="/records" className="btn-large btn-main">Records</NavLink>
+            </div>
         </div>
     </div>
 

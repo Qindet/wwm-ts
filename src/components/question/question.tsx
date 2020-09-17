@@ -28,27 +28,6 @@ const Question: React.FC<Question> = ({question,questionChecker,setShow,setIsWro
                                                  isWrong={isWrong}  questionChecker={questionChecker} number={i}
                                                  answer={i===1?question.firstAnswer:i===2?question.secondAnswer:i===3?question.thirdAnswer:question.fourthAnswer}
                     />)}
-
-
-            {/*<AnswerContainer  question={question}*/}
-            {/*    setShow={setShow}*/}
-            {/*                 isWrong={isWrong} setIsWrong={setIsWrong}*/}
-            {/*         questionChecker={questionChecker} number={1} answer={question.firstAnswer}/>*/}
-            {/*<AnswerContainer  question={question}*/}
-            {/*    setShow={setShow}*/}
-            {/*                 isWrong={isWrong} setIsWrong={setIsWrong}*/}
-
-            {/*                  questionChecker={questionChecker} number={2} answer={question.secondAnswer}/>*/}
-            {/*<AnswerContainer  question={question}*/}
-            {/*    setShow={setShow}*/}
-            {/*                 isWrong={isWrong} setIsWrong={setIsWrong}*/}
-
-            {/*                  questionChecker={questionChecker} number={3} answer={question.thirdAnswer}/>*/}
-            {/*<AnswerContainer  question={question}*/}
-            {/*    setShow={setShow}*/}
-            {/*                 isWrong={isWrong} setIsWrong={setIsWrong}*/}
-
-            {/*                 questionChecker={questionChecker} number={4} answer={question.fourthAnswer}/>*/}
         </div>
     </div>
     )

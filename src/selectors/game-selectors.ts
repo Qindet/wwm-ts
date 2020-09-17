@@ -35,6 +35,13 @@ export const getHearts = (state: AppStateType)=> {
     return state.gameReducer.hearts
 }
 
+export const getRecordsSelector = (state: AppStateType)=> {
+    return state.recordReducer.records
+}
+export const getRecordsLoading = (state: AppStateType)=> {
+    return state.recordReducer.loading
+}
+
 export const getQuestionSelector = createSelector(getQuestions,getCurrentGameStreak,getQuestionsIds,
     (questions,streak, questionsIds)=> {
         if (questionsIds === null) {

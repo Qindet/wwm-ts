@@ -1,0 +1,22 @@
+.records-main {
+    max-width: 600px;
+    min-height: 500px;
+    margin: 0 auto;
+    border: 1px solid #fff;
+    padding: 20px;
+}
+
+.records-bg {
+    background: radial-gradient(40% 50%, black, midnightblue);
+    min-height: 100vh;
+}
+
+.records-td {
+    font-size: 21px;
+    color: #fff;
+}
+
+.records-th {
+    color: darkgoldenrod;
+    font-size: 21px;
+}
