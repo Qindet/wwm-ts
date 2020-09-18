@@ -17,7 +17,7 @@ const Question: React.FC<Question> = ({question,questionChecker,setShow,setIsWro
 
     return (
         <div className={classes.QuestionMainContainer}>
-            {hearts===0?<div className={classes.NoHearts}>No hearts :(</div>:Array(hearts).fill('').map(_=><img className={classes.Heart} src={heart} />)}
+            {hearts===0?<div className={classes.NoHearts}>No hearts :(</div>:Array(hearts).fill('').map(_=><img alt="img" className={classes.Heart} src={heart} />)}
             <div className={classes.QuestionMainBlock}>
                 {question.question}
             </div>

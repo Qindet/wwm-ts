@@ -3,10 +3,10 @@ import './menu.css'
 import {NavLink} from 'react-router-dom'
 import logo from '../../assets/logo.png'
 
-const Menu = () => (
+const Menu:React.FC = () => (
     <div className="bg-color">
         <div className="header">
-            <img src={logo} className="logo-main"/>
+            <img alt="logo" src={logo} className="logo-main"/>
         </div>
         <div className="container menu-main mg">
             <div className="row">

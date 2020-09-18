@@ -21,6 +21,7 @@ type RecordsContainer = MapStatePropsType & MapDispatchPropsType & OwnProps
 const RecordsContainer: React.FC<RecordsContainer> = ({getRecords,loading,records}) => {
     useEffect(() => {
         getRecords()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     if (loading) {
         return <div>Loading...</div>

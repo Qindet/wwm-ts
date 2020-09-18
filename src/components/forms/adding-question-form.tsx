@@ -1,5 +1,5 @@
 import React from 'react';
-import {Formik, Form, Field, useFormik} from 'formik';
+import {Formik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 import {NavLink} from "react-router-dom";
 import classes from './form-styles.module.css'
@@ -7,7 +7,6 @@ import {QuestionItem} from "../../types/state";
 import {connect} from 'react-redux'
 import {AppStateType} from "../../redux/reducers";
 import {addQuestion} from "../../redux/actions/setting-questions";
-import {ThunkDispatch} from "redux-thunk";
 
 
 const QuestionSchema = Yup.object().shape({
@@ -65,10 +64,21 @@ const AddingQuestionForm: React.FC<AddingQuestionForm> = ({addQuestion}) => {
             <Formik
                 initialValues={initialValues}
                 validationSchema={QuestionSchema}
-                onSubmit={async values => {
+                onSubmit={async (values,actions) => {
                     const question = {...values, id: Date.now()}
                     addQuestion(question)
-
+                    actions.resetForm({
+                        values: {
+                            id: 1,
+                            questionNumber: '',
+                            question: '',
+                            firstAnswer: '',
+                            secondAnswer: '',
+                            thirdAnswer: '',
+                            fourthAnswer: '',
+                            rightAnswer: ''
+                        }
+                    })
                 }}
             >
                 {({errors, touched,handleReset}) => (

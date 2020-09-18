@@ -39,6 +39,7 @@ const AnswerContainer: React.FC<AnswerContainer> = ({question,addQuestionId,isWr
         if (number===+question.rightAnswer) {
             setClazz(classes.QuestionItemCorrect)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[isWrong])
 
     const [clazz,setClazz]=useState(classes.QuestionItemPong)

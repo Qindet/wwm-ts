@@ -19,6 +19,7 @@ const MenuContainer: React.FC<MenuContainer> = ({getQuestions}) => {
 
     useEffect(() => {
         getQuestions()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     return <Menu />
 }

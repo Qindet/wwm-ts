@@ -7,7 +7,7 @@
 }
 
 .records-bg {
-    background: radial-gradient(40% 50%, black, midnightblue);
+    background: radial-gradient(40% 50% at 50% 50%, black, midnightblue);
     min-height: 100vh;
 }
 

@@ -9,7 +9,6 @@ import {
 import {
     ADD_ID_QUESTION,
     CORRECT_ANSWER,
-    HINT_ACTIVATED,
     QUESTION_TOUCHED,
     START_GAME_LOADED,
     TIME_IS_UP,

@@ -28,6 +28,7 @@ const FinalScoreContainer: React.FC<FinalScoreContainer> = ({playerFinalScore,ad
             return
         }
         addRecord(playerFinalScore)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     if (playerFinalScore.playerName==='') {

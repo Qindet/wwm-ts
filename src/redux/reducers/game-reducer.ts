@@ -3,13 +3,11 @@ import {CurrentGamePlayerScore} from "../../types/state";
 import {
     ADD_ID_QUESTION,
     CORRECT_ANSWER,
-    HINT_ACTIVATED,
     QUESTION_TOUCHED,
     START_GAME_LOADED,
     TIME_IS_UP,
     WRONG_ANSWER
 } from "../actions/types";
-import thunk from "redux-thunk";
 
 
 const initialState: CurrentGamePlayerScore = {

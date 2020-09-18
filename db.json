@@ -79,6 +79,16 @@
       "thirdAnswer": "В мешочек",
       "fourthAnswer": "В рюкзачок",
       "rightAnswer": "3"
+    },
+    {
+      "id": 1600404900411,
+      "questionNumber": "2",
+      "question": " Что такое «карамба»?",
+      "firstAnswer": "испанское ругательство",
+      "secondAnswer": "щупальца каракатицы",
+      "thirdAnswer": "разбитая иномарка",
+      "fourthAnswer": "столица Караханидского государства",
+      "rightAnswer": "1"
     }
   ],
   "records": [

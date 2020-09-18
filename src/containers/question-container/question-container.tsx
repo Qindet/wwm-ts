@@ -30,12 +30,14 @@ const QuestionContainer: React.FC<QuestionContainer> = ({question,questionTouche
             setShow(true)
         },2000)
         return () => clearTimeout(timerId)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[question])
     useEffect(() => {
         const timerId = setTimeout(() => {
             timeIsUp()
         },2000000)
         return () => clearTimeout(timerId)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[question])
 
     const [show,setShow] = useState(false)
