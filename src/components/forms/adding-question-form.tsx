@@ -17,19 +17,15 @@ const QuestionSchema = Yup.object().shape({
         .max(100, 'Too Long!')
         .required('Required'),
     firstAnswer: Yup.string()
-        .min(5, 'Too Short!')
         .max(50, 'Too Long!')
         .required('Required'),
     secondAnswer: Yup.string()
-        .min(5, 'Too Short!')
         .max(50, 'Too Long!')
         .required('Required'),
     thirdAnswer: Yup.string()
-        .min(5, 'Too Short!')
         .max(50, 'Too Long!')
         .required('Required'),
     fourthAnswer: Yup.string()
-        .min(5, 'Too Short!')
         .max(50, 'Too Long!')
         .required('Required'),
     rightAnswer: Yup.string()
@@ -91,7 +87,7 @@ const AddingQuestionForm: React.FC<AddingQuestionForm> = ({addQuestion}) => {
                             <option value="4">4</option>
                             <option value="5">5</option>
                             <option value="6">6</option>
-                            <option value="17">7</option>
+                            <option value="7">7</option>
                             <option value="8">8</option>
                             <option value="9">9</option>
                             <option value="10">10</option>

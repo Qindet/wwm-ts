@@ -89,6 +89,146 @@
       "thirdAnswer": "разбитая иномарка",
       "fourthAnswer": "столица Караханидского государства",
       "rightAnswer": "1"
+    },
+    {
+      "id": 1600443359757,
+      "questionNumber": "3",
+      "question": "Из какого меха сделаны шапки королевских гвардейцев Великобритании?\t",
+      "firstAnswer": "Овечий",
+      "secondAnswer": "Волчий",
+      "thirdAnswer": "Соболиный",
+      "fourthAnswer": "Медвежий",
+      "rightAnswer": "4"
+    },
+    {
+      "id": 1600443491615,
+      "questionNumber": "4",
+      "question": "В каком виде спорта разыгрывают кубок Стэнли?\t",
+      "firstAnswer": "Футбол",
+      "secondAnswer": "Теннис",
+      "thirdAnswer": "Велоспорт",
+      "fourthAnswer": "Хоккей",
+      "rightAnswer": "4"
+    },
+    {
+      "id": 1600443568435,
+      "questionNumber": "5",
+      "question": "Какой спортивный снаряд не мечут, а толкают?\t",
+      "firstAnswer": "Диск!",
+      "secondAnswer": "Молот",
+      "thirdAnswer": "Копьё",
+      "fourthAnswer": "Ядро!",
+      "rightAnswer": "4"
+    },
+    {
+      "id": 1600443655510,
+      "questionNumber": "6",
+      "question": "Сколько куполов у Собора Василия Блаженного?\t",
+      "firstAnswer": "7",
+      "secondAnswer": "9",
+      "thirdAnswer": "10",
+      "fourthAnswer": "11",
+      "rightAnswer": "2"
+    },
+    {
+      "id": 1600443695110,
+      "questionNumber": "7",
+      "question": "Кто управляет государством Монако?\t",
+      "firstAnswer": "Царь",
+      "secondAnswer": "Князь",
+      "thirdAnswer": "Президент",
+      "fourthAnswer": "Барин",
+      "rightAnswer": "2"
+    },
+    {
+      "id": 1600443752060,
+      "questionNumber": "8",
+      "question": "С какого из Евангелий начинается Новый Завет?\t",
+      "firstAnswer": "От Луки",
+      "secondAnswer": "От Иоанна",
+      "thirdAnswer": "От Марка",
+      "fourthAnswer": "От Матфея",
+      "rightAnswer": "4"
+    },
+    {
+      "id": 1600443796926,
+      "questionNumber": "9",
+      "question": "Как называется песня из репертуара Аллы Пугачёвой?\t",
+      "firstAnswer": "«Гусли»",
+      "secondAnswer": "«Баян»",
+      "thirdAnswer": "«Балалайка»",
+      "fourthAnswer": "«Барабан»",
+      "rightAnswer": "3"
+    },
+    {
+      "id": 1600443831310,
+      "questionNumber": "10",
+      "question": "С каким философом Екатерина II вела дружескую переписку?\t",
+      "firstAnswer": "Руссо",
+      "secondAnswer": "Паскаль",
+      "thirdAnswer": "Вольтер",
+      "fourthAnswer": "Декарт",
+      "rightAnswer": "3"
+    },
+    {
+      "id": 1600443890276,
+      "questionNumber": "11",
+      "question": "На чём в ансамбле «Орэра» играл Вахтанг Кикабидзе?\t",
+      "firstAnswer": "На гитаре",
+      "secondAnswer": "На клавишных",
+      "thirdAnswer": "На ударных",
+      "fourthAnswer": "На скрипке",
+      "rightAnswer": "3"
+    },
+    {
+      "id": 1600444111670,
+      "questionNumber": "12",
+      "question": "Что носило название «пенни-фартинг»?",
+      "firstAnswer": "Игральный автомат",
+      "secondAnswer": "Телескоп",
+      "thirdAnswer": "Велосипед",
+      "fourthAnswer": "Дуэт клоунов",
+      "rightAnswer": "3"
+    },
+    {
+      "id": 1600444173202,
+      "questionNumber": "13",
+      "question": "У человека семь шейных позвонков. А сколько их у жирафа?\t",
+      "firstAnswer": "7",
+      "secondAnswer": "10",
+      "thirdAnswer": "15",
+      "fourthAnswer": "21",
+      "rightAnswer": "1"
+    },
+    {
+      "id": 1600444206722,
+      "questionNumber": "14",
+      "question": "Какая птица улетает зимой на юг?\t",
+      "firstAnswer": "Рябчик",
+      "secondAnswer": "Щегол",
+      "thirdAnswer": "Перепел",
+      "fourthAnswer": "Свиристель",
+      "rightAnswer": "3"
+    },
+    {
+      "id": 1600444269861,
+      "questionNumber": "15",
+      "question": "С какой фигуры начинаются соревнования по городошному спорту?\t",
+      "firstAnswer": "Часовые",
+      "secondAnswer": "Артиллерия",
+      "thirdAnswer": "Пулемётное гнездо",
+      "fourthAnswer": "Пушка",
+      "rightAnswer": "4"
+    },
+    {
+      "id": 1600444489432,
+      "questionNumber": "13",
+      "question": "Губной помадой какого цвета гримировали первых телеведущих?\t",
+      "firstAnswer": "Чёрного",
+      "secondAnswer": "Синего",
+      "thirdAnswer": "Красного",
+      "fourthAnswer": "Зелёного",
+      "rightAnswer": "4"
     }
   ],
   "records": [
